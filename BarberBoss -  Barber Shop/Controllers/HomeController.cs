@@ -1,4 +1,4 @@
-﻿using BarberBoss____Barber_Shop.Models;
+﻿using BarberBoss___Barber_Shop.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

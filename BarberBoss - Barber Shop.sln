@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss -  Barber Shop", "BarberBoss -  Barber Shop\BarberBoss -  Barber Shop.csproj", "{CD1BB9DE-42A5-418E-99D6-FD4A1EB65E84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss -  Barber Shop", "BarberBoss -  Barber Shop\BarberBoss -  Barber Shop.csproj", "{CD1BB9DE-42A5-418E-99D6-FD4A1EB65E84}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{121FCBC0-2CCC-49E7-A47D-C0C10E7CAFB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.Common", "BarberBoss - Barber Shop.Common\BarberBoss - Barber Shop.Common.csproj", "{1C0A13EE-3147-454A-B082-27B53B318BA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Common", "BarberBoss - Barber Shop.Common\BarberBoss - Barber Shop.Common.csproj", "{1C0A13EE-3147-454A-B082-27B53B318BA9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ACC5B47A-A90F-4E43-A347-8E07379ED85D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4B02DEAE-2D16-430D-B1AE-B27E17D9D12F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Data.Models", "BarberBoss - Barber Shop.Data.Models\BarberBoss - Barber Shop.Data.Models.csproj", "{F02EED2C-E9AC-448D-813D-0F6D3696223C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Data", "BarberBoss - Barber Shop.Data\BarberBoss - Barber Shop.Data.csproj", "{7F93A9E9-7C75-4FBF-8388-6FFAE90F0714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.ViewModels", "BarberBoss - Barber Shop.ViewModels\BarberBoss - Barber Shop.ViewModels.csproj", "{7C614971-7270-429E-879A-BCE439391366}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,12 +33,27 @@ Global
 		{1C0A13EE-3147-454A-B082-27B53B318BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C0A13EE-3147-454A-B082-27B53B318BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C0A13EE-3147-454A-B082-27B53B318BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F02EED2C-E9AC-448D-813D-0F6D3696223C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F02EED2C-E9AC-448D-813D-0F6D3696223C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F02EED2C-E9AC-448D-813D-0F6D3696223C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F02EED2C-E9AC-448D-813D-0F6D3696223C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F93A9E9-7C75-4FBF-8388-6FFAE90F0714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F93A9E9-7C75-4FBF-8388-6FFAE90F0714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F93A9E9-7C75-4FBF-8388-6FFAE90F0714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F93A9E9-7C75-4FBF-8388-6FFAE90F0714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C614971-7270-429E-879A-BCE439391366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C614971-7270-429E-879A-BCE439391366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C614971-7270-429E-879A-BCE439391366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C614971-7270-429E-879A-BCE439391366}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CD1BB9DE-42A5-418E-99D6-FD4A1EB65E84} = {121FCBC0-2CCC-49E7-A47D-C0C10E7CAFB3}
+		{F02EED2C-E9AC-448D-813D-0F6D3696223C} = {4B02DEAE-2D16-430D-B1AE-B27E17D9D12F}
+		{7F93A9E9-7C75-4FBF-8388-6FFAE90F0714} = {4B02DEAE-2D16-430D-B1AE-B27E17D9D12F}
+		{7C614971-7270-429E-879A-BCE439391366} = {121FCBC0-2CCC-49E7-A47D-C0C10E7CAFB3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F63BAD96-3A53-427E-8F44-8A6534DDFACB}
