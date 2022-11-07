@@ -1,25 +1,34 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using BarberBoss___Barber_Shop.Data.Common.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
+
 
 namespace BarberBoss___Barber_Shop.Data.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
-        public string Id { get; set; }
+        public ApplicationUser()
+        {
+            this.Id = Guid.NewGuid().ToString();
+            this.Roles = new HashSet<IdentityUserRole<string>>();
+            this.Claims = new HashSet<IdentityUserClaim<string>>();
+            this.Logins = new HashSet<IdentityUserLogin<string>>();
+        }
 
-        [Required]
-        [StringLength(60, MinimumLength = 5)]
-        public string FirstName { get; set; }
-        [Required]
-        [StringLength(60, MinimumLength = 5)]
-        public string LastName { get; set; }
 
-        [Required]
-        [StringLength(60, MinimumLength = 10)]
-        public string Email { get; set; }
+        public DateTime CreatedOn { get; set; }
 
-        [Required]
-        [StringLength(20, MinimumLength = 5)]
-        public string Password { get; set; }
+        public DateTime? ModifiedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
+
+        public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
+
+        public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
     }
 }

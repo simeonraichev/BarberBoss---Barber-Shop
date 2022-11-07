@@ -32,4 +32,8 @@
     <ProjectReference Include="..\BarberBoss - Barber Shop.ViewModels\BarberBoss - Barber Shop.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Account\" />
+  </ItemGroup>
+
 </Project>

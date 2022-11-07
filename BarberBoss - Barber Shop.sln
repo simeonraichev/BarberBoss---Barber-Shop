@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Data", "BarberBoss - Barber Shop.Data\BarberBoss - Barber Shop.Data.csproj", "{7F93A9E9-7C75-4FBF-8388-6FFAE90F0714}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.ViewModels", "BarberBoss - Barber Shop.ViewModels\BarberBoss - Barber Shop.ViewModels.csproj", "{7C614971-7270-429E-879A-BCE439391366}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.ViewModels", "BarberBoss - Barber Shop.ViewModels\BarberBoss - Barber Shop.ViewModels.csproj", "{7C614971-7270-429E-879A-BCE439391366}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.Data.Common", "BarberBoss - Barber Shop.Data.Common\BarberBoss - Barber Shop.Data.Common.csproj", "{FD7E6A1B-478E-44AC-A916-B51BA1389BDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7C614971-7270-429E-879A-BCE439391366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C614971-7270-429E-879A-BCE439391366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C614971-7270-429E-879A-BCE439391366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7E6A1B-478E-44AC-A916-B51BA1389BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7E6A1B-478E-44AC-A916-B51BA1389BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7E6A1B-478E-44AC-A916-B51BA1389BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7E6A1B-478E-44AC-A916-B51BA1389BDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{F02EED2C-E9AC-448D-813D-0F6D3696223C} = {4B02DEAE-2D16-430D-B1AE-B27E17D9D12F}
 		{7F93A9E9-7C75-4FBF-8388-6FFAE90F0714} = {4B02DEAE-2D16-430D-B1AE-B27E17D9D12F}
 		{7C614971-7270-429E-879A-BCE439391366} = {121FCBC0-2CCC-49E7-A47D-C0C10E7CAFB3}
+		{FD7E6A1B-478E-44AC-A916-B51BA1389BDB} = {4B02DEAE-2D16-430D-B1AE-B27E17D9D12F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F63BAD96-3A53-427E-8F44-8A6534DDFACB}

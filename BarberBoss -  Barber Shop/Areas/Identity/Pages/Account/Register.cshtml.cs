@@ -52,6 +52,14 @@ namespace BarberBoss____Barber_Shop.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [StringLength(20, MinimumLength = 2)]
+            public string FirstName { get; set; }
+
+            [Required]
+            [StringLength(20, MinimumLength = 2)]
+            public string LastName { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
