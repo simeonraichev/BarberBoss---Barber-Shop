@@ -1,10 +1,8 @@
-﻿using BarberBoss___Barber_Shop.Data.Common.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+
+using BarberBoss___Barber_Shop.Data.Common.Models;
+
+using Microsoft.AspNetCore.Identity;
 
 
 namespace BarberBoss___Barber_Shop.Data.Models

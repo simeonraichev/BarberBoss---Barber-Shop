@@ -25,14 +25,14 @@ namespace BarberBoss____Barber_Shop.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<BarberBoss___Barber_Shop.Data.Models.MyApplicationUser> _signInManager;
+        private readonly UserManager<BarberBoss___Barber_Shop.Data.Models.MyApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
+            UserManager<BarberBoss___Barber_Shop.Data.Models.MyApplicationUser> userManager,
+            SignInManager<BarberBoss___Barber_Shop.Data.Models.MyApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -88,7 +88,7 @@ namespace BarberBoss____Barber_Shop.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new BarberBoss___Barber_Shop.Data.Models.MyApplicationUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
