@@ -25,14 +25,14 @@ namespace BarberBoss____Barber_Shop.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<BarberBoss___Barber_Shop.Data.Models.MyApplicationUser> _signInManager;
-        private readonly UserManager<BarberBoss___Barber_Shop.Data.Models.MyApplicationUser> _userManager;
+        private readonly SignInManager<MyApplicationUser> _signInManager;
+        private readonly UserManager<MyApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<BarberBoss___Barber_Shop.Data.Models.MyApplicationUser> userManager,
-            SignInManager<BarberBoss___Barber_Shop.Data.Models.MyApplicationUser> signInManager,
+            UserManager<MyApplicationUser> userManager,
+            SignInManager<MyApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -52,11 +52,15 @@ namespace BarberBoss____Barber_Shop.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [StringLength(20, MinimumLength = 2)]
+            [RegularExpression(@"[A-Za-z]+", ErrorMessage = "The {0} must contain only letters.")]
+            [StringLength(25, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [Display(Name = "First name")]
             public string FirstName { get; set; }
 
             [Required]
-            [StringLength(20, MinimumLength = 2)]
+            [Display(Name = "Last name")]
+            [RegularExpression(@"[A-Za-z]+", ErrorMessage = "The {0} must contain only letters.")]
+            [StringLength(25, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
             public string LastName { get; set; }
 
             [Required]
@@ -88,7 +92,7 @@ namespace BarberBoss____Barber_Shop.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new BarberBoss___Barber_Shop.Data.Models.MyApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new MyApplicationUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
@@ -124,5 +128,19 @@ namespace BarberBoss____Barber_Shop.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
+        //private MyApplicationUser CreateUser()
+        //{
+        //    try
+        //    {
+        //        return Activator.CreateInstance<MyApplicationUser>();
+        //    }
+        //    catch
+        //    {
+        //        throw new InvalidOperationException($"Can't create an instance of '{nameof(MyApplicationUser)}'. " +
+        //            $"Ensure that '{nameof(MyApplicationUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+        //            $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
+        //    }
+        //}
     }
 }
