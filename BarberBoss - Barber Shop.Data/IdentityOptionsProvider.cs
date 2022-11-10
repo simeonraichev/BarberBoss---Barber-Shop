@@ -16,6 +16,9 @@ namespace BarberBoss___Barber_Shop.Data
             options.Password.RequireUppercase = false;
             options.Password.RequireNonAlphanumeric = false;
             options.Password.RequiredLength = 6;
+            options.User.RequireUniqueEmail = false;
+            options.SignIn.RequireConfirmedAccount = false;
+
         }
     }
 }
