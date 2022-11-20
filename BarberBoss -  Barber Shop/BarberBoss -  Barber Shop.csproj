@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Account\" />
+    <Folder Include="Views\Shared\Components\" />
   </ItemGroup>
 
 </Project>
