@@ -31,14 +31,14 @@
 
 <header role="banner">
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-light">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">Barber Boss</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+            <div class="collapse navbar-collapse navbar-dark bg-dark" id="navbarsExample05">
                 <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
                     <li class="nav-item">
                         <a class="nav-link active" href="index.html">Home</a>
@@ -65,8 +65,7 @@
                     </li>
                 </ul>
 
-            </div>
-            <div>
+            
                 @if (!isLogged)
                 {
                     <div class="d-flex align-items-center">
@@ -87,7 +86,7 @@
                         </a>
 
                         <!-- Notifications -->
-                        <div class="dropdown">
+                        @*<div class="dropdown">
                             <a class="text-reset me-3 dropdown-toggle hidden-arrow"
                            href="#"
                            id="navbarDropdownMenuLink"
@@ -104,10 +103,11 @@
                                     <a class="dropdown-item" href="#">Messages</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>*@
                     </div>
                 }
-                </div>
+            </div>
+                
         </div>
     </nav>
 </header>
