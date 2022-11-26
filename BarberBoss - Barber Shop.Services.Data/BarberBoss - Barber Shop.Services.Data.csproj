@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BarberBoss - Barber Shop.Data.Common\BarberBoss - Barber Shop.Data.Common.csproj" />
+    <ProjectReference Include="..\BarberBoss - Barber Shop.Data.Models\BarberBoss - Barber Shop.Data.Models.csproj" />
+    <ProjectReference Include="..\BarberBoss - Barber Shop.Services.Mapping\BarberBoss - Barber Shop.Services.Mapping.csproj" />
+  </ItemGroup>
+
 </Project>

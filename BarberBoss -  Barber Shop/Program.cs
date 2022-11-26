@@ -1,4 +1,5 @@
 using BarberBoss___Barber_Shop.Data;
+using BarberBoss___Barber_Shop.Data.Common.Repositories;
 using BarberBoss___Barber_Shop.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ builder.Services.AddDefaultIdentity<MyApplicationUser>(IdentityOptionsProvider.G
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(IDeletableEntityRepository<>));
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BarberBoss___Barber_Shop.Data.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.Data.Models
 {
-    public class BarberShop
+    public class BarberShop : BaseDeletableModel<string>
     {
+        public BarberShop()
+        {
+            this.Appointments = new HashSet<Appointment>();
+            this.Services = new HashSet<BarberShopService>();
+        }
+
         [Required]
         [MaxLength(15)]
         public string Name { get; set; }
@@ -31,6 +38,14 @@ namespace BarberBoss___Barber_Shop.Data.Models
         [Required]
         [MaxLength(15)]
         public string Address { get; set; }
+
+        public double Rating { get; set; }
+
+        public int RatersCount { get; set; }
+
+        public virtual ICollection<BarberShopService> Services { get; set; }
+
+        public virtual ICollection<Appointment> Appointments { get; set; }
 
     }
 }
