@@ -7,14 +7,11 @@ namespace BarberBoss____Barber_Shop.Controllers
     public class BarberShopsController : Controller
     {
         private readonly IBarberShopsService salonsService;
-        private readonly ICategoriesService categoriesService;
 
         public BarberShopsController(
-            IBarberShopsService salonsService,
-            ICategoriesService categoriesService)
+            IBarberShopsService salonsService)
         {
             this.salonsService = salonsService;
-            this.categoriesService = categoriesService;
         }
 
         public async Task<IActionResult> Index(
@@ -23,18 +20,6 @@ namespace BarberBoss____Barber_Shop.Controllers
             string searchString,
             int? pageNumber)
         {
-            if (sortId != null)
-            {
-                var category = await this.categoriesService
-                    .GetByIdAsync<CategorySimpleViewModel>(sortId.Value);
-                if (category == null)
-                {
-                    return new StatusCodeResult(404);
-                }
-
-                this.ViewData["CategoryName"] = category.Name;
-            }
-
             this.ViewData["CurrentSort"] = sortId;
 
             if (searchString != null)
@@ -61,7 +46,7 @@ namespace BarberBoss____Barber_Shop.Controllers
 
             var viewModel = new BarberShopPaginatedListViewModel
             {
-                Salons = new PaginatedList<SalonViewModel>(salonsList, count, pageIndex, pageSize),
+                Salons = new PaginatedList<BarberShopViewModel>(salonsList, count, pageIndex, pageSize),
             };
 
             return this.View(viewModel);
