@@ -1,5 +1,6 @@
 ﻿using BarberBoss___Barber_Shop.Services.Data.BarberShops;
 using BarberBoss___Barber_Shop.ViewModels.BarberShops;
+using BarberBoss___Barber_Shop.ViewModels.Common.Pagination;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BarberBoss____Barber_Shop.Controllers
@@ -33,7 +34,7 @@ namespace BarberBoss____Barber_Shop.Controllers
 
             this.ViewData["CurrentFilter"] = searchString;
 
-            int pageSize = PageSizesConstants.BarberShops;
+            int pageSize = 8;
             var pageIndex = pageNumber ?? 1;
 
             var salons = await this.salonsService
@@ -46,7 +47,7 @@ namespace BarberBoss____Barber_Shop.Controllers
 
             var viewModel = new BarberShopPaginatedListViewModel
             {
-                Salons = new PaginatedList<BarberShopViewModel>(salonsList, count, pageIndex, pageSize),
+                BarberShops = new PaginatedList<BarberShopViewModel>(salonsList, count, pageIndex, pageSize),
             };
 
             return this.View(viewModel);
