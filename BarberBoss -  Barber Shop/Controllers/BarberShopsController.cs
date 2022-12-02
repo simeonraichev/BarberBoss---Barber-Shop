@@ -49,7 +49,7 @@ namespace BarberBoss____Barber_Shop.Controllers
             {
                 BarberShops = new PaginatedList<BarberShopViewModel>(salonsList, count, pageIndex, pageSize),
             };
-
+      
             return this.View(viewModel);
         }
 
