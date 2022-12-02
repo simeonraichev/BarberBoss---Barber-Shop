@@ -15,6 +15,7 @@ namespace BarberBoss___Barber_Shop.Data
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<BarberShop> BarberShop { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

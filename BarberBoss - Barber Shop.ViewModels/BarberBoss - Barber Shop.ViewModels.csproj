@@ -21,4 +21,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BarberBoss - Barber Shop.Services.Data\BarberBoss - Barber Shop.Services.Data.csproj" />
+    <ProjectReference Include="..\BarberBoss - Barber Shop.Services.Mapping\BarberBoss - Barber Shop.Services.Mapping.csproj" />
+  </ItemGroup>
+
 </Project>

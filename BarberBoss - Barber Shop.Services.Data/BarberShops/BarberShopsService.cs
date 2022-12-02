@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
 {
-    public class BarberShopsService
+    public class BarberShopsService : IBarberShopsService
     {
         private readonly IDeletableEntityRepository<BarberShop> barberShopRepository;
 
@@ -44,12 +44,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
                                 .Contains(searchString.ToLower()));
             }
 
-            if (sortId != null)
-            {
-                query = query
-                    .Where(x => x.CategoryId == sortId);
-            }
-
             return await query
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
@@ -69,26 +63,10 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
                     .Where(x => x.Name.ToLower()
                                 .Contains(searchString.ToLower()));
             }
-
-            if (sortId != null)
-            {
-                query = query
-                    .Where(x => x.CategoryId == sortId);
-            }
-
+                       
             return await query.CountAsync();
         }
 
-        public async Task<IEnumerable<string>> GetAllIdsByCategoryAsync(int categoryId)
-        {
-            var salonsIds =
-                await this.barberShopRepository
-                .All()
-                .Where(x => x.CategoryId == categoryId)
-                .Select(x => x.Id)
-                .ToListAsync();
-            return salonsIds;
-        }
 
         public async Task<T> GetByIdAsync<T>(string id)
         {
@@ -106,7 +84,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = name,
-                CategoryId = categoryId,
                 TownId = townId,
                 Address = address,
                 ImageUrl = imageUrl,

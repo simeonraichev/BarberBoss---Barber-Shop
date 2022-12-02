@@ -18,8 +18,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
 
         Task<int> GetCountForPaginationAsync(string searchString, int? sortId);
 
-        Task<IEnumerable<string>> GetAllIdsByCategoryAsync(int categoryId);
-
         Task<T> GetByIdAsync<T>(string id);
 
         Task<string> AddAsync(string name, int categoryId, int cityId, string address, string imageUrl);

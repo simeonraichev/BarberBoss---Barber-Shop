@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BarberBoss___Barber_Shop.Data.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.Data.Models
 {
-    public class Town
+    public class Town : BaseDeletableModel<int>
     {
         public Town()
         {

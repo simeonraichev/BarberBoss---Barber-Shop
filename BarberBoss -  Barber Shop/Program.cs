@@ -17,7 +17,6 @@ builder.Services.AddDefaultIdentity<MyApplicationUser>(IdentityOptionsProvider.G
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(IDeletableEntityRepository<>));
 
 var app = builder.Build();
 

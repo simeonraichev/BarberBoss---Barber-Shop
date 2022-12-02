@@ -13,7 +13,7 @@ namespace BarberBoss___Barber_Shop.Data.Models
         public BarberShop()
         {
             this.Appointments = new HashSet<Appointment>();
-            this.Services = new HashSet<BarberShopService>();
+            this.Services = new HashSet<BarberShopsService>();
         }
 
         [Required]
@@ -27,10 +27,6 @@ namespace BarberBoss___Barber_Shop.Data.Models
 
         public virtual MyApplicationUser Owner { get; set; }
 
-        public int CategoryId { get; set; }
-
-        public virtual Category Category { get; set; }
-
         public int TownId { get; set; }
 
         public virtual Town Town { get; set; }
@@ -43,7 +39,7 @@ namespace BarberBoss___Barber_Shop.Data.Models
 
         public int RatersCount { get; set; }
 
-        public virtual ICollection<BarberShopService> Services { get; set; }
+        public virtual ICollection<BarberShopsService> Services { get; set; }
 
         public virtual ICollection<Appointment> Appointments { get; set; }
 
