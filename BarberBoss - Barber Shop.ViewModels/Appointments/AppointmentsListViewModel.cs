@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BarberBoss___Barber_Shop.ViewModels.Appointments
+{
+    public class AppointmentsListViewModel
+    {
+        public IEnumerable<AppointmentsViewModel> Appointments { get; set; }
+    }
+}

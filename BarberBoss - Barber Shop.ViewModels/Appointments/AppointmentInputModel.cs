@@ -10,7 +10,7 @@ namespace BarberBoss___Barber_Shop.ViewModels.Appointments
     public class AppointmentInputModel
     {
         [Required]
-        public string SalonId { get; set; }
+        public string BarberShopId { get; set; }
 
         [Required]
         public int ServiceId { get; set; }
