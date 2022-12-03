@@ -16,7 +16,7 @@ namespace BarberBoss___Barber_Shop.Services.Data.Appointments
 
         Task<IEnumerable<T>> GetNextClientByUserAsync<T>(string userId);
 
-        Task<IEnumerable<T>> GetPastClietByUserAsync<T>(string userId);
+        Task<IEnumerable<T>> GetPastClientByUserAsync<T>(string userId);
 
         Task AddAsync(string userId, string barberShopId, int serviceId, DateTime dateTime);
 
