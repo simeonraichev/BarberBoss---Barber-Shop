@@ -4,6 +4,7 @@ using BarberBoss___Barber_Shop.Data.Common;
 using BarberBoss___Barber_Shop.Data.Common.Repositories;
 using BarberBoss___Barber_Shop.Data.Models;
 using BarberBoss___Barber_Shop.Data.Repositories;
+using BarberBoss___Barber_Shop.Services.Data.Appointments;
 using BarberBoss___Barber_Shop.Services.Data.BarberShops;
 using BarberBoss___Barber_Shop.Services.Data.BarberShopsServices;
 using BeautyBooking.Services.Messaging;
@@ -34,6 +35,8 @@ builder.Services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 builder.Services.AddTransient<IEmailSender, NullMessageSender>();
 builder.Services.AddTransient<IBarberShopsService, BarberBoss___Barber_Shop.Services.Data.BarberShops.BarberShopsService>();
 builder.Services.AddTransient<IBarberShopsServicesService, BarberShopsServicesService>();
+builder.Services.AddTransient<IAppointmentsService, AppointmentsService>();
+
 
 var app = builder.Build();
 
