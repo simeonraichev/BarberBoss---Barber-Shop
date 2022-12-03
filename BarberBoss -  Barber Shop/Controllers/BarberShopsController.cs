@@ -5,18 +5,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BarberBoss____Barber_Shop.Controllers
 {
-    public class BarberShopsController : Controller
+    public class BarberShopsController : BaseController
     {
-        private readonly IBarberShopsService salonsService;
+        private readonly IBarberShopsService barberShopsService;
 
         public BarberShopsController(
-            IBarberShopsService salonsService)
+            IBarberShopsService barberShopsService)
         {
-            this.salonsService = salonsService;
+            this.barberShopsService = barberShopsService;
         }
 
         public async Task<IActionResult> Index(
-            int? sortId, // categoryId
+            int? sortId, 
             string currentFilter,
             string searchString,
             int? pageNumber)
@@ -37,12 +37,12 @@ namespace BarberBoss____Barber_Shop.Controllers
             int pageSize = 8;
             var pageIndex = pageNumber ?? 1;
 
-            var salons = await this.salonsService
+            var salons = await this.barberShopsService
                 .GetAllWithSortingFilteringAndPagingAsync<BarberShopViewModel>(
                     searchString, sortId, pageSize, pageIndex);
             var salonsList = salons.ToList();
 
-            var count = await this.salonsService
+            var count = await this.barberShopsService
                 .GetCountForPaginationAsync(searchString, sortId);
 
             var viewModel = new BarberShopPaginatedListViewModel
@@ -55,7 +55,7 @@ namespace BarberBoss____Barber_Shop.Controllers
 
         public async Task<IActionResult> Details(string id)
         {
-            var viewModel = await this.salonsService.GetByIdAsync<BarberShopWithServicesViewModel>(id);
+            var viewModel = await this.barberShopsService.GetByIdAsync<BarberShopWithServicesViewModel>(id);
 
             if (viewModel == null)
             {
