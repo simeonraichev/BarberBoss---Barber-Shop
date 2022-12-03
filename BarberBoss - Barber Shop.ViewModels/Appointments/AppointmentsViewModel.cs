@@ -27,7 +27,9 @@ namespace BarberBoss___Barber_Shop.ViewModels.Appointments
         public int ServiceId { get; set; }
 
         public string ServiceName { get; set; }
-        //TODO: Add functionality if the appointment is confirmed
-        //TODO: Add functionality if the use has rated the barberShop
+
+        public bool? Confirmed { get; set; }
+
+        public bool? IsSalonRatedByTheUser { get; set; }
     }
 }
