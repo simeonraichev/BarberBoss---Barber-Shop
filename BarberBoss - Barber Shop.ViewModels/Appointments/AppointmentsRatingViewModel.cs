@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.ViewModels.Appointments
 {
-    public class AppointmentRatingViewModel : IMapFrom<Appointment>
+    public class AppointmentsRatingViewModel : IMapFrom<Appointment>
     {
         public string Id { get; set; }
 

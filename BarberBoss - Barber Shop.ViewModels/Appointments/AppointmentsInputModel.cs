@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.ViewModels.Appointments
 {
-    public class AppointmentInputModel
+    public class AppointmentsInputModel
     {
         [Required]
         public string BarberShopId { get; set; }

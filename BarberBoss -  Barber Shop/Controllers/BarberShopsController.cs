@@ -14,7 +14,7 @@ namespace BarberBoss____Barber_Shop.Controllers
         {
             this.barberShopsService = barberShopsService;
         }
-
+         
         public async Task<IActionResult> Index(
             int? sortId, 
             string currentFilter,
