@@ -1,3 +1,5 @@
+using AutoMapper;
+using BarberBoss____Barber_Shop.Services.Mapping;
 using BarberBoss____Barber_Shop.Services.Messaging;
 using BarberBoss___Barber_Shop.Data;
 using BarberBoss___Barber_Shop.Data.Common;
@@ -7,9 +9,12 @@ using BarberBoss___Barber_Shop.Data.Repositories;
 using BarberBoss___Barber_Shop.Services.Data.Appointments;
 using BarberBoss___Barber_Shop.Services.Data.BarberShops;
 using BarberBoss___Barber_Shop.Services.Data.BarberShopsServices;
+using BarberBoss___Barber_Shop.Services.DateTimeParser;
+using BarberBoss___Barber_Shop.Web.ViewModels;
 using BeautyBooking.Services.Messaging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +29,8 @@ builder.Services.AddDefaultIdentity<MyApplicationUser>(IdentityOptionsProvider.G
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
-
+//AutoMapper Configuration
+AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
 // Data repositories
 builder.Services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
@@ -36,6 +42,8 @@ builder.Services.AddTransient<IEmailSender, NullMessageSender>();
 builder.Services.AddTransient<IBarberShopsService, BarberBoss___Barber_Shop.Services.Data.BarberShops.BarberShopsService>();
 builder.Services.AddTransient<IBarberShopsServicesService, BarberShopsServicesService>();
 builder.Services.AddTransient<IAppointmentsService, AppointmentsService>();
+builder.Services.AddTransient<IDateTimeParserService, DateTimeParserService>();
+
 
 
 var app = builder.Build();

@@ -1,0 +1,53 @@
+﻿@model BarberBoss___Barber_Shop.ViewModels.Appointments.AppointmentsListViewModel
+@{
+    this.ViewData["Title"] = "Default";
+}
+
+@if (@Model.Appointments.Count() > 0)
+{
+    <h2>Past (@Model.Appointments.Count())</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Date and Time</th>
+                <th scope="col">Salon</th>
+                <th scope="col">Address</th>
+                <th scope="col">Service</th>
+                <th scope="col">Rate Salon</th>
+                <th scope="col">Book Again</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in this.Model.Appointments)
+            {
+                <tr>
+                    <th scope="row">@appointment.DateTime</th>
+                    <td>@appointment.BarberShopName</td>
+                    <td>@appointment.BarberShopTownName, @appointment.BarberShopAddress</td>
+                    <td>@appointment.ServiceName</td>
+                    <td>
+                        @if (appointment.IsBarberShopRatedByTheUser == true)
+                        {
+                            <p>Already Rated!</p>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-success btn-sm"
+                               asp-area="" asp-controller="Appointments" asp-action="RatePastAppointment" asp-route-id="@appointment.Id">
+                                Rate Salon
+                            </a>
+                        }
+                    </td>
+                    <td>
+                        <div class="button elements_button">
+                            <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" asp-route-salonId="@appointment.BarberShopId" asp-route-serviceId="@appointment.ServiceId">
+                                <span>book again</span><span>book again</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
