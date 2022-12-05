@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>BarberBoss___Barber_Shop.Web.Infrastructure</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BarberBoss - Barber Shop.Services.Data\BarberBoss - Barber Shop.Services.Data.csproj" />
+    <ProjectReference Include="..\BarberBoss - Barber Shop.ViewModels\BarberBoss - Barber Shop.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>
