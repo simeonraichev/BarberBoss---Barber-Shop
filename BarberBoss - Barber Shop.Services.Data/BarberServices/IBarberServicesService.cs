@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.Services.Data.BarberServices
 {
-    public interface IBarberServices
+    public interface IBarberServicesService
     {
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
 

@@ -6,9 +6,9 @@ namespace BarberBoss____Barber_Shop.Controllers
 {
     public class BarberServicesController : BaseController
     {
-        private readonly IBarberServices barberServices;
+        private readonly IBarberServicesService barberServices;
 
-        public BarberServicesController(IBarberServices barberServices)
+        public BarberServicesController(IBarberServicesService barberServices)
         {
             this.barberServices = barberServices;
         }

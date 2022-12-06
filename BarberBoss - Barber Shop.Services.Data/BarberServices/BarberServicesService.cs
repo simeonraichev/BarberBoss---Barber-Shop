@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.Services.Data.BarberServices
 {
-    public class BarberServices : IBarberServices
+    public class BarberServicesService : IBarberServicesService
     {
         private readonly IDeletableEntityRepository<BarberService> barberServicesRepository;
 
-        public BarberServices(IDeletableEntityRepository<BarberService> barberServicesRepository)
+        public BarberServicesService(IDeletableEntityRepository<BarberService> barberServicesRepository)
         {
             this.barberServicesRepository = barberServicesRepository;
         }
