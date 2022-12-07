@@ -35,5 +35,8 @@ namespace BarberBoss___Barber_Shop.Data.Models
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
+        public virtual ICollection<Appointment> Appointments { get; set; }
+
+        public virtual ICollection<BarberShop> BarberShops { get; set; }
     }
 }

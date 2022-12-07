@@ -26,6 +26,10 @@ namespace BarberBoss___Barber_Shop.Data.Models
         public string OwnerId { get; set; }
 
         public virtual MyApplicationUser Owner { get; set; }
+        
+        public int BarberServiceId { get; set; }
+
+        public virtual BarberService BarberService { get; set; }
 
         public int TownId { get; set; }
 

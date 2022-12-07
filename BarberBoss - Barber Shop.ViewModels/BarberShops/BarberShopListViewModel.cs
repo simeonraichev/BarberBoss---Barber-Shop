@@ -8,6 +8,6 @@ namespace BarberBoss___Barber_Shop.ViewModels.BarberShops
 {
     public class BarberShopListViewModel
     {
-        public IEnumerable<BarberShopViewModel> Salons { get; set; }
+        public IEnumerable<BarberShopViewModel> BarberShops { get; set; }
     }
 }

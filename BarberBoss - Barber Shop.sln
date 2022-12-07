@@ -23,13 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Da
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{F5BF8147-4D90-47F1-AE11-60F166CE8C03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.Services", "BarberBoss - Barber Shop.Services\BarberBoss - Barber Shop.Services.csproj", "{8FF7135B-62C4-4067-B5C6-9448AF0FEF42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Services", "BarberBoss - Barber Shop.Services\BarberBoss - Barber Shop.Services.csproj", "{8FF7135B-62C4-4067-B5C6-9448AF0FEF42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.Services.Data", "BarberBoss - Barber Shop.Services.Data\BarberBoss - Barber Shop.Services.Data.csproj", "{BE4F7751-7A27-4D30-AFF4-9363FC1F1F35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Services.Data", "BarberBoss - Barber Shop.Services.Data\BarberBoss - Barber Shop.Services.Data.csproj", "{BE4F7751-7A27-4D30-AFF4-9363FC1F1F35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.Services.Mapping", "BarberBoss - Barber Shop.Services.Mapping\BarberBoss - Barber Shop.Services.Mapping.csproj", "{4CC66215-9F11-4BE5-9325-E4145B3FD212}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Services.Mapping", "BarberBoss - Barber Shop.Services.Mapping\BarberBoss - Barber Shop.Services.Mapping.csproj", "{4CC66215-9F11-4BE5-9325-E4145B3FD212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.Services.Messaging", "BarberBoss - Barber Shop.Services.Messaging\BarberBoss - Barber Shop.Services.Messaging.csproj", "{F2831E78-B76B-4438-BD74-E10C1879F3C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Services.Messaging", "BarberBoss - Barber Shop.Services.Messaging\BarberBoss - Barber Shop.Services.Messaging.csproj", "{F2831E78-B76B-4438-BD74-E10C1879F3C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.Web.Infrastructure", "BarberBoss - Barber Shop.Web.Infrastructure\BarberBoss - Barber Shop.Web.Infrastructure.csproj", "{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{F2831E78-B76B-4438-BD74-E10C1879F3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2831E78-B76B-4438-BD74-E10C1879F3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2831E78-B76B-4438-BD74-E10C1879F3C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +97,7 @@ Global
 		{BE4F7751-7A27-4D30-AFF4-9363FC1F1F35} = {F5BF8147-4D90-47F1-AE11-60F166CE8C03}
 		{4CC66215-9F11-4BE5-9325-E4145B3FD212} = {F5BF8147-4D90-47F1-AE11-60F166CE8C03}
 		{F2831E78-B76B-4438-BD74-E10C1879F3C8} = {F5BF8147-4D90-47F1-AE11-60F166CE8C03}
+		{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6} = {121FCBC0-2CCC-49E7-A47D-C0C10E7CAFB3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F63BAD96-3A53-427E-8F44-8A6534DDFACB}

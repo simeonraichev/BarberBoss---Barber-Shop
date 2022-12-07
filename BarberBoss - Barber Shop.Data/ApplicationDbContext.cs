@@ -12,10 +12,40 @@ namespace BarberBoss___Barber_Shop.Data
             typeof(ApplicationDbContext).GetMethod(
                 nameof(SetIsDeletedQueryFilter),
                 BindingFlags.NonPublic | BindingFlags.Static);
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
         {
         }
-        public DbSet<BarberShop> BarberShop { get; set; }
+
+        public DbSet<Service> Services { get; set; }
+
+        public DbSet<Town> Towns { get; set; }
+
+        public DbSet<BarberShop> BarberShops { get; set; }
+
+        public DbSet<BarberShopsService> BarberShopsServices { get; set; }
+
+        public DbSet<Appointment> Appointments { get; set; }
+
+        public override int SaveChanges() => this.SaveChanges(true);
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            this.ApplyAuditInfoRules();
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>
+            this.SaveChangesAsync(true, cancellationToken);
+
+        public override Task<int> SaveChangesAsync(
+            bool acceptAllChangesOnSuccess,
+            CancellationToken cancellationToken = default)
+        {
+            this.ApplyAuditInfoRules();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -77,7 +107,5 @@ namespace BarberBoss___Barber_Shop.Data
                 }
             }
         }
-
-
     }
 }

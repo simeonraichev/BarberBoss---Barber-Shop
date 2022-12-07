@@ -12,7 +12,7 @@ namespace BarberBoss___Barber_Shop.Data.Models
     {
         public Service()
         {
-            this.Salons = new HashSet<BarberShopsService>();
+            this.BarberShops = new HashSet<BarberShopsService>();
             this.Appointments = new HashSet<Appointment>();
         }
 
@@ -20,11 +20,15 @@ namespace BarberBoss___Barber_Shop.Data.Models
         [MaxLength(15)]
         public string Name { get; set; }
 
+        public int BarberServiceId { get; set; }
+
+        public virtual BarberService BarberService { get; set; }
+
         [Required]
         [MaxLength(200)]
         public string Description { get; set; }
 
-        public virtual ICollection<BarberShopsService> Salons { get; set; }
+        public virtual ICollection<BarberShopsService> BarberShops { get; set; }
 
         public virtual ICollection<Appointment> Appointments { get; set; }
     }
