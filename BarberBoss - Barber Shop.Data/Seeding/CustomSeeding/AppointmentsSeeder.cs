@@ -23,12 +23,12 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
             var userId = dbContext.Users.Where(x => x.Email == "user@user.com").FirstOrDefault().Id;
 
             // Get Salons Ids
-            var barberShopsIds = await dbContext.BarberShop.Select(x => x.Id).Take(10).ToListAsync();
+            var barberShopsIds = await dbContext.BarberShops.Select(x => x.Id).Take(10).ToListAsync();
 
             foreach (var salonId in barberShopsIds)
             {
                 // Get a Service from each Salon
-                var serviceId = dbContext.BarberShopServices.Where(x => x.BarberShopId == salonId).FirstOrDefault().ServiceId;
+                var serviceId = dbContext.BarberShopsServices.Where(x => x.BarberShopId == salonId).FirstOrDefault().ServiceId;
 
                 // Add Upcoming Appointments
                 appointments.Add(new Appointment
