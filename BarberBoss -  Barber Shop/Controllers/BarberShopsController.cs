@@ -37,17 +37,17 @@ namespace BarberBoss____Barber_Shop.Controllers
             int pageSize = 8;
             var pageIndex = pageNumber ?? 1;
 
-            var salons = await this.barberShopsService
+            var barberShops = await this.barberShopsService
                 .GetAllWithSortingFilteringAndPagingAsync<BarberShopViewModel>(
                     searchString, sortId, pageSize, pageIndex);
-            var salonsList = salons.ToList();
+            var barberShopsList = barberShops.ToList();
 
             var count = await this.barberShopsService
                 .GetCountForPaginationAsync(searchString, sortId);
 
             var viewModel = new BarberShopPaginatedListViewModel
             {
-                BarberShops = new PaginatedList<BarberShopViewModel>(salonsList, count, pageIndex, pageSize),
+                BarberShops = new PaginatedList<BarberShopViewModel>(barberShopsList, count, pageIndex, pageSize),
             };
       
             return this.View(viewModel);

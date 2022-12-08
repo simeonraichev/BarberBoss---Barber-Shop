@@ -17,6 +17,8 @@ namespace BarberBoss___Barber_Shop.ViewModels.Appointments
 
         public string BarberShopName { get; set; }
 
+        public string BarberShopServiceName { get; set; }
+
         public string BarberShopTownName { get; set; }
 
         public string BarberShopAddress { get; set; }

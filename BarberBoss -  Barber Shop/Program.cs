@@ -6,6 +6,7 @@ using BarberBoss___Barber_Shop.Data.Common;
 using BarberBoss___Barber_Shop.Data.Common.Repositories;
 using BarberBoss___Barber_Shop.Data.Models;
 using BarberBoss___Barber_Shop.Data.Repositories;
+using BarberBoss___Barber_Shop.Data.Seeding;
 using BarberBoss___Barber_Shop.Services.Data.Appointments;
 using BarberBoss___Barber_Shop.Services.Data.BarberShops;
 using BarberBoss___Barber_Shop.Services.Data.BarberShopsServices;
@@ -29,8 +30,6 @@ builder.Services.AddDefaultIdentity<MyApplicationUser>(IdentityOptionsProvider.G
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
-//AutoMapper Configuration
-AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
 // Data repositories
 builder.Services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
@@ -47,6 +46,17 @@ builder.Services.AddTransient<IDateTimeParserService, DateTimeParserService>();
 
 
 var app = builder.Build();
+
+//AutoMapper Configuration
+
+AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+using (var serviceScope = app.Services.CreateScope())
+{
+    ApplicationDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    dbContext.Database.Migrate();
+    new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+}
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
