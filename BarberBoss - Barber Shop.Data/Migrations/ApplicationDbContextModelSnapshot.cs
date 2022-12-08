@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BarberBoss____Barber_Shop.Data.Migrations
+namespace BarberBoss___Barber_Shop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -110,7 +110,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Appointments", (string)null);
+                    b.ToTable("Appointments");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.BarberService", b =>
@@ -151,7 +151,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("BarberServices", (string)null);
+                    b.ToTable("BarberServices");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.BarberShop", b =>
@@ -161,8 +161,8 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                        .HasMaxLength(45)
+                        .HasColumnType("nvarchar(45)");
 
                     b.Property<int>("BarberServiceId")
                         .HasColumnType("int");
@@ -185,8 +185,8 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                        .HasMaxLength(45)
+                        .HasColumnType("nvarchar(45)");
 
                     b.Property<string>("OwnerId")
                         .IsRequired()
@@ -211,7 +211,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasIndex("TownId");
 
-                    b.ToTable("BarberShops", (string)null);
+                    b.ToTable("BarberShops");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.BarberShopsService", b =>
@@ -252,7 +252,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("BarberShopsServices", (string)null);
+                    b.ToTable("BarberShopsServices");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", b =>
@@ -381,7 +381,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Services", (string)null);
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.Town", b =>
@@ -413,7 +413,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Towns", (string)null);
+                    b.ToTable("Towns");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
