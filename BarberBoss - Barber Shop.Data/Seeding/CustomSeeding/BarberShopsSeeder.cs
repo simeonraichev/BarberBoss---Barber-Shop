@@ -11,7 +11,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            if (dbContext.BarberShop.Any())
+            if (dbContext.BarberShops.Any())
             {
                 return;
             }
