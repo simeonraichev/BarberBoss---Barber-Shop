@@ -17,7 +17,7 @@ namespace BarberBoss___Barber_Shop.Data.Models
         }
 
         [Required]
-        [MaxLength(15)]
+        [MaxLength(45)]
         public string Name { get; set; }
 
         [Required]
@@ -36,7 +36,7 @@ namespace BarberBoss___Barber_Shop.Data.Models
         public virtual Town Town { get; set; }
 
         [Required]
-        [MaxLength(15)]
+        [MaxLength(45)]
         public string Address { get; set; }
 
         public double Rating { get; set; }

@@ -31,7 +31,7 @@ namespace BarberBoss___Barber_Shop.Data.Configuration
             appointment
                 .HasOne(a => a.BarberShopService)
                 .WithMany(ss => ss.Appointments)
-                .HasForeignKey(a => new { a.BarberShopId, a.ServiceId });
+                .HasForeignKey(a => new { a.ServiceId , a.BarberShopId});
         }
     }
 }

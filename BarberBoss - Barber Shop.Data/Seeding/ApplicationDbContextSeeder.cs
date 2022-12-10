@@ -28,7 +28,8 @@ namespace BarberBoss___Barber_Shop.Data.Seeding
             var seeders = new List<ISeeder>
                           {
                               new RolesSeeder(),
-                              new BarberShopsSeeder()
+                              new BarberShopsSeeder(),
+                              new AppointmentsSeeder()
                           };
 
             foreach (var seeder in seeders)

@@ -26,6 +26,8 @@ namespace BarberBoss___Barber_Shop.Data
 
         public DbSet<BarberShopsService> BarberShopsServices { get; set; }
 
+        public DbSet<BarberService> BarberServices { get; set; }
+
         public DbSet<Appointment> Appointments { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);

@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BarberBoss____Barber_Shop.Data.Migrations
+namespace BarberBoss___Barber_Shop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221202201919_BarberShopsSeed")]
-    partial class BarberShopsSeed
+    [Migration("20221208095931_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,9 +74,6 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("BarberShopServiceId")
-                        .HasColumnType("int");
-
                     b.Property<bool?>("Confirmed")
                         .HasColumnType("bit");
 
@@ -109,15 +106,54 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasIndex("BarberShopId");
 
-                    b.HasIndex("BarberShopServiceId");
-
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("ServiceId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Appointment");
+                    b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.BarberService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("BarberServices");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.BarberShop", b =>
@@ -127,8 +163,11 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                        .HasMaxLength(45)
+                        .HasColumnType("nvarchar(45)");
+
+                    b.Property<int>("BarberServiceId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -148,8 +187,8 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                        .HasMaxLength(45)
+                        .HasColumnType("nvarchar(45)");
 
                     b.Property<string>("OwnerId")
                         .IsRequired()
@@ -166,13 +205,15 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BarberServiceId");
+
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("OwnerId");
 
                     b.HasIndex("TownId");
 
-                    b.ToTable("BarberShop");
+                    b.ToTable("BarberShops");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.BarberShopsService", b =>
@@ -213,7 +254,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("BarberShopsService");
+                    b.ToTable("BarberShopsServices");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", b =>
@@ -311,6 +352,9 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("BarberServiceId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -335,9 +379,11 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BarberServiceId");
+
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Service");
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.Town", b =>
@@ -369,7 +415,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Town");
+                    b.ToTable("Towns");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -411,16 +457,11 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MyApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MyApplicationUserId");
 
                     b.HasIndex("UserId");
 
@@ -435,9 +476,6 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                     b.Property<string>("ProviderKey")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("MyApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
@@ -446,8 +484,6 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("MyApplicationUserId");
 
                     b.HasIndex("UserId");
 
@@ -462,12 +498,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("MyApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("MyApplicationUserId");
 
                     b.HasIndex("RoleId");
 
@@ -503,7 +534,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.BarberShopsService", "BarberShopService")
                         .WithMany("Appointments")
-                        .HasForeignKey("BarberShopServiceId")
+                        .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -514,7 +545,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("Appointments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -530,8 +561,14 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.BarberShop", b =>
                 {
+                    b.HasOne("BarberBoss___Barber_Shop.Data.Models.BarberService", "BarberService")
+                        .WithMany("BarberShops")
+                        .HasForeignKey("BarberServiceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", "Owner")
-                        .WithMany()
+                        .WithMany("BarberShops")
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -541,6 +578,8 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                         .HasForeignKey("TownId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("BarberService");
 
                     b.Navigation("Owner");
 
@@ -556,7 +595,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.Service", "Service")
-                        .WithMany("Salons")
+                        .WithMany("BarberShops")
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -564,6 +603,17 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                     b.Navigation("BarberShop");
 
                     b.Navigation("Service");
+                });
+
+            modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.Service", b =>
+                {
+                    b.HasOne("BarberBoss___Barber_Shop.Data.Models.BarberService", "BarberService")
+                        .WithMany("Services")
+                        .HasForeignKey("BarberServiceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("BarberService");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -579,10 +629,6 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                 {
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
                         .WithMany("Claims")
-                        .HasForeignKey("MyApplicationUserId");
-
-                    b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
-                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -592,10 +638,6 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                 {
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
                         .WithMany("Logins")
-                        .HasForeignKey("MyApplicationUserId");
-
-                    b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
-                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -603,10 +645,6 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
-                        .WithMany("Roles")
-                        .HasForeignKey("MyApplicationUserId");
-
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
@@ -614,7 +652,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
-                        .WithMany()
+                        .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -627,6 +665,13 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.BarberService", b =>
+                {
+                    b.Navigation("BarberShops");
+
+                    b.Navigation("Services");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.BarberShop", b =>
@@ -643,6 +688,10 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", b =>
                 {
+                    b.Navigation("Appointments");
+
+                    b.Navigation("BarberShops");
+
                     b.Navigation("Claims");
 
                     b.Navigation("Logins");
@@ -654,7 +703,7 @@ namespace BarberBoss____Barber_Shop.Data.Migrations
                 {
                     b.Navigation("Appointments");
 
-                    b.Navigation("Salons");
+                    b.Navigation("BarberShops");
                 });
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.Town", b =>
