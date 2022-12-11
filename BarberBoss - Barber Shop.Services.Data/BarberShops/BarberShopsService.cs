@@ -67,6 +67,16 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
             return await query.CountAsync();
         }
 
+        public async Task<IEnumerable<string>> GetAllIdsByBarberServiceAsync(int barberServiceId)
+        {
+            var barberShopsIds =
+                await this.barberShopRepository
+                .All()
+                .Where(x => x.BarberServiceId == barberServiceId)
+                .Select(x => x.Id)
+                .ToListAsync();
+            return barberShopsIds;
+        }
 
         public async Task<T> GetByIdAsync<T>(string id)
         {

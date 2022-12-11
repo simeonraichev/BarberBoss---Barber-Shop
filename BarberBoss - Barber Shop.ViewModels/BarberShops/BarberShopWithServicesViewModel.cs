@@ -14,9 +14,9 @@ namespace BarberBoss___Barber_Shop.ViewModels.BarberShops
 
         public string ImageUrl { get; set; }
 
-        public string CategoryName { get; set; }
+        public string BarberServiceName { get; set; }
 
-        public string CityName { get; set; }
+        public string TownName { get; set; }
 
         public string Address { get; set; }
 
