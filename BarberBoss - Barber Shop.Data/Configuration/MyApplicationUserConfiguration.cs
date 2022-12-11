@@ -11,23 +11,23 @@ namespace BarberBoss___Barber_Shop.Data.Configuration
 {
     public class MyApplicationUserConfiguration : IEntityTypeConfiguration<MyApplicationUser>
     {
-        public void Configure(EntityTypeBuilder<MyApplicationUser> appUser)
+        public void Configure(EntityTypeBuilder<MyApplicationUser> applicationUser)
         {
-            appUser
+            applicationUser
                 .HasMany(e => e.Claims)
                 .WithOne()
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            appUser
+            applicationUser
                 .HasMany(e => e.Logins)
                 .WithOne()
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            appUser
+            applicationUser
                 .HasMany(e => e.Roles)
                 .WithOne()
                 .HasForeignKey(e => e.UserId)

@@ -1,4 +1,5 @@
 ﻿using BarberBoss___Barber_Shop.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.Data.Configuration
 {
-    public class BarberShopServiceConfiguration
+    public class BarberShopServiceConfiguration : IEntityTypeConfiguration<BarberShopsService>
     {
-        public void Configure(EntityTypeBuilder<BarberShopsService> salonService)
+        public void Configure(EntityTypeBuilder<BarberShopsService> barberShopService)
         {
-            salonService.HasKey(bs => new { bs.BarberShopId, bs.ServiceId });
+            barberShopService.HasKey(bs => new { bs.BarberShopId, bs.ServiceId });
         }
     }
 }

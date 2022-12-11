@@ -34,6 +34,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
                 appointments.Add(new Appointment
                 {
                     Id = Guid.NewGuid().ToString(),
+
                     DateTime = DateTime.UtcNow.AddDays(5),
                     UserId = userId,
                     BarberShopId = salonId,

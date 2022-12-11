@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
 {
-    public class TownsSeeder
+    public class TownsSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
@@ -16,7 +16,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
                 return;
             }
 
-            var cities = new Town[]
+            var towns = new Town[]
                 {
                     new Town // Id = 1
                     {
@@ -29,7 +29,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
                 };
 
             // Ordered
-            foreach (var city in cities)
+            foreach (var city in towns)
             {
                 await dbContext.AddAsync(city);
                 await dbContext.SaveChangesAsync();

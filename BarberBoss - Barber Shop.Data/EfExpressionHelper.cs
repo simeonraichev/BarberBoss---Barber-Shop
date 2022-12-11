@@ -41,28 +41,28 @@ namespace BarberBoss___Barber_Shop.Data
 
         private static BinaryExpression BuildPredicate(
             IReadOnlyList<IProperty> keyProperties,
-            ValueBuffer keyValues,
+            ValueBuffer valueKeys,
             ParameterExpression entityParameter)
         {
-            var keyValuesConstant = Expression.Constant(keyValues);
+            var keyValuesConstant = Expression.Constant(valueKeys);
 
-            BinaryExpression predicate = null;
+            BinaryExpression predic = null;
             for (var i = 0; i < keyProperties.Count; i++)
             {
-                var property = keyProperties[i];
-                var equalsExpression = Expression.Equal(
+                var prop = keyProperties[i];
+                var expressionEqual = Expression.Equal(
                     Expression.Call(
-                        EfPropertyMethod.MakeGenericMethod(property.ClrType),
+                        EfPropertyMethod.MakeGenericMethod(prop.ClrType),
                         entityParameter,
-                        Expression.Constant(property.Name, StringType)),
+                        Expression.Constant(prop.Name, StringType)),
                     Expression.Convert(
                         Expression.Call(keyValuesConstant, ValueBufferGetValueMethod, Expression.Constant(i)),
-                        property.ClrType));
+                        prop.ClrType));
 
-                predicate = predicate == null ? equalsExpression : Expression.AndAlso(predicate, equalsExpression);
+                predic = predic == null ? expressionEqual : Expression.AndAlso(predic, expressionEqual);
             }
 
-            return predicate;
+            return predic;
         }
     }
 }

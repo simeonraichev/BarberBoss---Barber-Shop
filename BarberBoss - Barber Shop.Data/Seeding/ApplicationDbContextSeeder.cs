@@ -25,14 +25,14 @@ namespace BarberBoss___Barber_Shop.Data.Seeding
 
             var logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger(typeof(ApplicationDbContextSeeder));
 
-            var seeders = new List<ISeeder>
+            var seedersList = new List<ISeeder>
                           {
                               new RolesSeeder(),
                               new BarberShopsSeeder(),
                               new AppointmentsSeeder()
                           };
 
-            foreach (var seeder in seeders)
+            foreach (var seeder in seedersList)
             {
                 await seeder.SeedAsync(dbContext, serviceProvider);
                 await dbContext.SaveChangesAsync();

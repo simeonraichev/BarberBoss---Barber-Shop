@@ -21,13 +21,13 @@ namespace BarberBoss___Barber_Shop.Data.Seeding
 
         private static async Task SeedRoleAsync(RoleManager<ApplicationRole> roleManager, string roleName)
         {
-            var role = await roleManager.FindByNameAsync(roleName);
-            if (role == null)
+            var roleByName = await roleManager.FindByNameAsync(roleName);
+            if (roleByName == null)
             {
-                var result = await roleManager.CreateAsync(new ApplicationRole(roleName));
-                if (!result.Succeeded)
+                var finalResult = await roleManager.CreateAsync(new ApplicationRole(roleName));
+                if (!finalResult.Succeeded)
                 {
-                    throw new Exception(string.Join(Environment.NewLine, result.Errors.Select(e => e.Description)));
+                    throw new Exception(string.Join(Environment.NewLine, finalResult.Errors.Select(e => e.Description)));
                 }
             }
         }

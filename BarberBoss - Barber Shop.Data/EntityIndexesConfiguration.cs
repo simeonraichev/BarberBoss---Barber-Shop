@@ -12,13 +12,12 @@ namespace BarberBoss___Barber_Shop.Data
     {
         public static void Configure(ModelBuilder modelBuilder)
         {
-            // IDeletableEntity.IsDeleted index
-            var deletableEntityTypes = modelBuilder.Model
+            var entityTypesDelete = modelBuilder.Model
                 .GetEntityTypes()
                 .Where(et => et.ClrType != null && typeof(IDeletableEntity).IsAssignableFrom(et.ClrType));
-            foreach (var deletableEntityType in deletableEntityTypes)
+            foreach (var entityTypeDelete in entityTypesDelete)
             {
-                modelBuilder.Entity(deletableEntityType.ClrType).HasIndex(nameof(IDeletableEntity.IsDeleted));
+                modelBuilder.Entity(entityTypeDelete.ClrType).HasIndex(nameof(IDeletableEntity.IsDeleted));
             }
         }
     }

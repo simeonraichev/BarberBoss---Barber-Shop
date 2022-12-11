@@ -16,7 +16,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
                 return;
             }
 
-            var salons = new BarberShop[]
+            var barberShop = new BarberShop[]
                 {
                     new BarberShop
                     {
@@ -123,7 +123,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
                     }
                 };
 
-            await dbContext.AddRangeAsync(salons);
+            await dbContext.AddRangeAsync(barberShop);
         }
     }
 }
