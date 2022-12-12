@@ -131,7 +131,7 @@ namespace BarberBoss____Barber_Shop.Controllers
             }
 
             await this.appointmentsService.RateAppointmentAsync(rating.Id);
-            await this.barberShopsService.RateSalonAsync(rating.BarberShopId, rating.RateValue);
+            await this.barberShopsService.RateBarberShopAsync(rating.BarberShopId, rating.RateValue);
 
             return this.RedirectToAction("Details", "BarberShops", new { id = rating.BarberShopId });
         }

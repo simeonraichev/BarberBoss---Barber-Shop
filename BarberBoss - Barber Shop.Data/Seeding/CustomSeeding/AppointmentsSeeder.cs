@@ -20,15 +20,15 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
             var appointments = new List<Appointment>();
 
             // Get User Id
-            var userId = dbContext.Users.Where(x => x.Email == "user@user.com").FirstOrDefault().Id;
+            var userId = dbContext.Users.Where(x => x.Email == "user1@gmail.com").FirstOrDefault().Id;
 
-            // Get Salons Ids
+            // Get BarberShop Ids
             var barberShopsIds = await dbContext.BarberShops.Select(x => x.Id).Take(10).ToListAsync();
 
-            foreach (var salonId in barberShopsIds)
+            foreach (var barberShopId in barberShopsIds)
             {
-                // Get a Service from each Salon
-                var serviceId = dbContext.BarberShopsServices.Where(x => x.BarberShopId == salonId).FirstOrDefault().ServiceId;
+                // Get a Service from each BarberShop
+                var serviceId = dbContext.BarberShopsServices.Where(x => x.BarberShopId == barberShopId).FirstOrDefault().ServiceId;
 
                 // Add Upcoming Appointments
                 appointments.Add(new Appointment
@@ -37,7 +37,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
 
                     DateTime = DateTime.UtcNow.AddDays(5),
                     UserId = userId,
-                    BarberShopId = salonId,
+                    BarberShopId = barberShopId,
                     ServiceId = serviceId,
                 });
 
@@ -47,7 +47,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
                     Id = Guid.NewGuid().ToString(),
                     DateTime = DateTime.UtcNow.AddDays(-5),
                     UserId = userId,
-                    BarberShopId = salonId,
+                    BarberShopId = barberShopId,
                     ServiceId = serviceId,
                     Confirmed = true,
                 });
@@ -58,7 +58,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding
                     Id = Guid.NewGuid().ToString(),
                     DateTime = DateTime.UtcNow.AddDays(-10),
                     UserId = userId,
-                    BarberShopId = salonId,
+                    BarberShopId = barberShopId,
                     ServiceId = serviceId,
                     Confirmed = true,
                 });

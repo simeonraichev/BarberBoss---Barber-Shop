@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BarberBoss___Barber_Shop.Data.Migrations
+namespace BarberBossBarberShop.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    /// <inheritdoc />
+    public partial class Initial : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -123,11 +125,17 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MyApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserClaims_AspNetUsers_MyApplicationUserId",
+                        column: x => x.MyApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AspNetUserClaims_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -143,11 +151,17 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MyApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserLogins_AspNetUsers_MyApplicationUserId",
+                        column: x => x.MyApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -161,7 +175,8 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MyApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -172,6 +187,11 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetUsers_MyApplicationUserId",
+                        column: x => x.MyApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -232,7 +252,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OwnerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    OwnerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BarberServiceId = table.Column<int>(type: "int", nullable: false),
                     TownId = table.Column<int>(type: "int", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: false),
@@ -306,6 +326,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BarberShopId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ServiceId = table.Column<int>(type: "int", nullable: false),
+                    BarberShopServiceId = table.Column<int>(type: "int", nullable: false),
                     Confirmed = table.Column<bool>(type: "bit", nullable: true),
                     IsSalonRatedByTheUser = table.Column<bool>(type: "bit", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -323,15 +344,15 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Appointments_BarberShops_BarberShopId",
-                        column: x => x.BarberShopId,
-                        principalTable: "BarberShops",
+                        name: "FK_Appointments_BarberShopsServices_BarberShopServiceId",
+                        column: x => x.BarberShopServiceId,
+                        principalTable: "BarberShopsServices",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Appointments_BarberShopsServices_ServiceId",
-                        column: x => x.ServiceId,
-                        principalTable: "BarberShopsServices",
+                        name: "FK_Appointments_BarberShops_BarberShopId",
+                        column: x => x.BarberShopId,
+                        principalTable: "BarberShops",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -346,6 +367,11 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                 name: "IX_Appointments_BarberShopId",
                 table: "Appointments",
                 column: "BarberShopId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_BarberShopServiceId",
+                table: "Appointments",
+                column: "BarberShopServiceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_IsDeleted",
@@ -380,14 +406,29 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserClaims_MyApplicationUserId",
+                table: "AspNetUserClaims",
+                column: "MyApplicationUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserLogins_MyApplicationUserId",
+                table: "AspNetUserLogins",
+                column: "MyApplicationUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_MyApplicationUserId",
+                table: "AspNetUserRoles",
+                column: "MyApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
@@ -467,6 +508,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                 column: "IsDeleted");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

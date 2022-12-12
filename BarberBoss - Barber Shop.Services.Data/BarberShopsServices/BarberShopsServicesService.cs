@@ -61,14 +61,14 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShopsServices
 
         public async Task ChangeAvailableStatusAsync(string barberShopId, int serviceId)
         {
-            var salonService =
+            var barberShopService =
                 await this.barberShopsServicesRepository
                 .All()
                 .Where(x => x.BarberShopId == barberShopId
                             && x.ServiceId == serviceId)
                 .FirstOrDefaultAsync();
 
-            salonService.Available = !salonService.Available;
+            barberShopService.Available = !barberShopService.Available;
 
             await this.barberShopsServicesRepository.SaveChangesAsync();
         }

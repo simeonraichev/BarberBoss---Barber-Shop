@@ -17,8 +17,8 @@
             </div>
             <div class="about_text_highlight">
                 <ol>
-                    <li>Find a salon.</li>
-                    <li>Choose a beauty service.</li>
+                    <li>Find a barberShop.</li>
+                    <li>Choose a barber service.</li>
                     <li>Pick date and time.</li>
                 </ol>
             </div>
@@ -98,7 +98,7 @@
                 <ol>
                     <li>
                         <span class="badge badge-secondary">Pending</span>
-                        - Waiting for the Salon's reply.
+                        - Waiting for the Barber's reply.
                     </li>
                     <li>
                         <span class="badge badge-success">Confirmed</span>
@@ -108,12 +108,12 @@
                     <li>
                         <span class="badge badge-danger">Declined</span>
                         - Sorry, the appointment can't happen on the set date and time.
-                        Check your email for rescheduling options from the Salon.
+                        Check your email for rescheduling options from the Barber Shop.
                     </li>
                 </ol>
                 <ul>
                     <li>Or you can just <strong>book again.</strong> Remember the steps, right?</li>
-                    <li>Go find a salon, choose a service and pick date and time.</li>
+                    <li>Go find a barber shop, choose a service and pick date and time.</li>
                     <li>
                         <div class="button button-large button_1 elements_button mt-4">
                             <a asp-area="" asp-controller="BarberShops" asp-action="Index">
@@ -130,6 +130,6 @@
 
 <hr class="bg-dark m-4" style="height: 6px;" />
 
-<div>
+@*<div>
     @await Component.InvokeAsync("PastAppointments")
-</div>
+</div>*@

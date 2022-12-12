@@ -1,4 +1,4 @@
-﻿namespace BeautyBooking.Services.Messaging
+﻿namespace BarberBoss____Barber_Shop.Services.Messaging
 {
     using BarberBoss____Barber_Shop.Services.Messaging;
     using System.Collections.Generic;

@@ -12,7 +12,7 @@ namespace BarberBoss___Barber_Shop.Data.Models
     {
         public Town()
         {
-            this.Salons = new HashSet<BarberShop>();
+            this.BarberShops = new HashSet<BarberShop>();
         }
 
         [Required]
@@ -20,6 +20,6 @@ namespace BarberBoss___Barber_Shop.Data.Models
         //TODO: Extract the constants in global class
         public string Name { get; set; }
 
-        public virtual ICollection<BarberShop> Salons { get; set; }
+        public virtual ICollection<BarberShop> BarberShops { get; set; }
     }
 }

@@ -41,7 +41,7 @@ namespace BarberBoss____Barber_Shop.Areas.Administration.Controllers
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> AddSalon()
+        public async Task<IActionResult> AddBarberShop()
         {
             var barberServives = await this.barberServicesService.GetAllAsync<BarberServiceSelectListViewModel>();
             var towns = await this.townService.GetAllAsync<TownSelectListViewModel>();
@@ -72,11 +72,11 @@ namespace BarberBoss____Barber_Shop.Areas.Administration.Controllers
             //}
 
             // Add BarberShop
-            var salonId = await this.barberShopsService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, imageUrl);
+            var barberShoppId = await this.barberShopsService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, imageUrl);
 
-            // Add to the Salon all Services from its Category
+            // Add to the BarberShop all Services from its BarberServices
             var servicesIds = await this.servicesService.GetAllIdsByBarberServiceAsync(input.CategoryId);
-            await this.barberShopsServicesService.AddAsync(salonId, servicesIds);
+            await this.barberShopsServicesService.AddAsync(barberShoppId, servicesIds);
 
             return this.RedirectToAction("Index");
         }

@@ -20,12 +20,12 @@ namespace BarberBoss___Barber_Shop.Web.Infrastructure.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            // This is used as a Menu in Salon Manager Area
+            // This is used as a Menu in BarberShop Manager Area
             // Now only the Admin can Add new shops and only the seeded Manager can manage all of them
             // When Registering a BarberShop becomes an option for every user, UserId (OwnerId for Barber Shop) would be checked here
-            var viewModel = new BarberShopSimpleViewModel
+            var viewModel = new BarberShopsSimpleListViewModel
             {
-                BarberShops = await this.barberShopsService.GetAllAsync<BarberShopSimpleViewModel>(),
+                BarberShops = await this.barberShopsService.GetAllAsync<BarberShopsSimpleViewModel>()
             };
 
             return this.View(viewModel);

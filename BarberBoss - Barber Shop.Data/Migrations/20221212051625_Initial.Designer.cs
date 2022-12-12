@@ -9,20 +9,21 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BarberBoss___Barber_Shop.Data.Migrations
+namespace BarberBossBarberShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221208095931_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20221212051625_Initial")]
+    partial class Initial
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("BarberBoss___Barber_Shop.Data.Models.ApplicationRole", b =>
                 {
@@ -74,6 +75,9 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("BarberShopServiceId")
+                        .HasColumnType("int");
+
                     b.Property<bool?>("Confirmed")
                         .HasColumnType("bit");
 
@@ -106,6 +110,8 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
 
                     b.HasIndex("BarberShopId");
 
+                    b.HasIndex("BarberShopServiceId");
+
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("ServiceId");
@@ -121,7 +127,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -222,7 +228,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Available")
                         .HasColumnType("bit");
@@ -350,7 +356,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BarberServiceId")
                         .HasColumnType("int");
@@ -392,7 +398,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -424,7 +430,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -449,7 +455,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -457,11 +463,16 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MyApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MyApplicationUserId");
 
                     b.HasIndex("UserId");
 
@@ -476,6 +487,9 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                     b.Property<string>("ProviderKey")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("MyApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
@@ -484,6 +498,8 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("MyApplicationUserId");
 
                     b.HasIndex("UserId");
 
@@ -498,7 +514,12 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("MyApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("MyApplicationUserId");
 
                     b.HasIndex("RoleId");
 
@@ -534,7 +555,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
 
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.BarberShopsService", "BarberShopService")
                         .WithMany("Appointments")
-                        .HasForeignKey("ServiceId")
+                        .HasForeignKey("BarberShopServiceId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -629,6 +650,10 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                 {
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
                         .WithMany("Claims")
+                        .HasForeignKey("MyApplicationUserId");
+
+                    b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -638,6 +663,10 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                 {
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
                         .WithMany("Logins")
+                        .HasForeignKey("MyApplicationUserId");
+
+                    b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -645,6 +674,10 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
+                    b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
+                        .WithMany("Roles")
+                        .HasForeignKey("MyApplicationUserId");
+
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
@@ -652,7 +685,7 @@ namespace BarberBoss___Barber_Shop.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("BarberBoss___Barber_Shop.Data.Models.MyApplicationUser", null)
-                        .WithMany("Roles")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();

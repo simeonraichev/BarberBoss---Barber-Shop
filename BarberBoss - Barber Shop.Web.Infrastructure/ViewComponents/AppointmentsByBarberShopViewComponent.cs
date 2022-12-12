@@ -18,12 +18,12 @@ namespace BarberBoss___Barber_Shop.Web.Infrastructure.ViewComponents
             this.appointmentsService = appointmentsService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string salonId)
+        public async Task<IViewComponentResult> InvokeAsync(string barberShopId)
         {
             var viewModel = new AppointmentsListViewModel
             {
                 Appointments =
-                    await this.appointmentsService.GetAllByBarberShopAsync<AppointmentsViewModel>(salonId),
+                    await this.appointmentsService.GetAllByBarberShopAsync<AppointmentsViewModel>(barberShopId),
             };
 
             return this.View(viewModel);

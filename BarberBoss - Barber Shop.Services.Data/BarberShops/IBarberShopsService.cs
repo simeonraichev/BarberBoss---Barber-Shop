@@ -22,10 +22,10 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
 
         Task<T> GetByIdAsync<T>(string id);
 
-        Task<string> AddAsync(string name, int categoryId, int cityId, string address, string imageUrl);
+        Task<string> AddAsync(string name, int barberServiceId, int townId, string address, string imageUrl);
 
         Task DeleteAsync(string id);
 
-        Task RateSalonAsync(string id, int rateValue);
+        Task RateBarberShopAsync(string id, int rateValue);
     }
 }

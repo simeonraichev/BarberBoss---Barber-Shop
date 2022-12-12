@@ -1,4 +1,5 @@
-﻿using BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding;
+﻿//using BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding;
+using BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,9 +28,10 @@ namespace BarberBoss___Barber_Shop.Data.Seeding
 
             var seedersList = new List<ISeeder>
                           {
-                              new RolesSeeder(),
-                              new BarberShopsSeeder(),
-                              new AppointmentsSeeder()
+                              //new RolesSeeder(),
+                              ////new BarberShopsSeeder(),
+                              //new AppointmentsSeeder(),
+                              //new TownsSeeder()
                           };
 
             foreach (var seeder in seedersList)

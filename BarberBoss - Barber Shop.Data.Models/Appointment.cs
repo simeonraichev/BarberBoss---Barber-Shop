@@ -28,9 +28,9 @@ namespace BarberBoss___Barber_Shop.Data.Models
 
         public virtual BarberShopsService BarberShopService { get; set; }
 
-        // The Salon can Confirm or Decline an appointment
+        // The BarberShop can Confirm or Decline an appointment
         public bool? Confirmed { get; set; }
 
-        public bool? IsSalonRatedByTheUser { get; set; }
+        public bool? IsBarberShopRatedByTheUser { get; set; }
     }
 }

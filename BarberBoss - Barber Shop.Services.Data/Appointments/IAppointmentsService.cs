@@ -12,7 +12,7 @@ namespace BarberBoss___Barber_Shop.Services.Data.Appointments
 
         Task<IEnumerable<T>> GetAllAsync<T>();
 
-        Task<IEnumerable<T>> GetAllByBarberShopAsync<T>(string salonId);
+        Task<IEnumerable<T>> GetAllByBarberShopAsync<T>(string barberShopId);
 
         Task<IEnumerable<T>> GetNextClientByUserAsync<T>(string userId);
 

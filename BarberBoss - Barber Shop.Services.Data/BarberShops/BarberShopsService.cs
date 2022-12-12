@@ -80,17 +80,17 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
 
         public async Task<T> GetByIdAsync<T>(string id)
         {
-            var salon =
+            var barberShop =
                 await this.barberShopRepository
                 .All()
                 .Where(x => x.Id == id)
                 .To<T>().FirstOrDefaultAsync();
-            return salon;
+            return barberShop;
         }
 
-        public async Task<string> AddAsync(string name, int categoryId, int townId, string address, string imageUrl)
+        public async Task<string> AddAsync(string name, int barberServiceId, int townId, string address, string imageUrl)
         {
-            var salon = new BarberShop
+            var barberShop = new BarberShop
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = name,
@@ -101,38 +101,38 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
                 RatersCount = 0,
             };
 
-            await this.barberShopRepository.AddAsync(salon);
+            await this.barberShopRepository.AddAsync(barberShop);
             await this.barberShopRepository.SaveChangesAsync();
-            return salon.Id;
+            return barberShop.Id;
         }
 
         public async Task DeleteAsync(string id)
         {
-            var salon =
+            var barberShop =
                 await this.barberShopRepository
                 .AllAsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
-            this.barberShopRepository.Delete(salon);
+            this.barberShopRepository.Delete(barberShop);
             await this.barberShopRepository.SaveChangesAsync();
         }
 
-        public async Task RateSalonAsync(string id, int rateValue)
+        public async Task RateBarberShopAsync(string id, int rateValue)
         {
-            var salon =
+            var barberShop =
                 await this.barberShopRepository
                 .All()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
 
-            var oldRating = salon.Rating;
-            var oldRatersCount = salon.RatersCount;
+            var oldRating = barberShop.Rating;
+            var oldRatersCount = barberShop.RatersCount;
 
             var newRatersCount = oldRatersCount + 1;
             var newRating = (oldRating + rateValue) / newRatersCount;
 
-            salon.Rating = newRating;
-            salon.RatersCount = newRatersCount;
+            barberShop.Rating = newRating;
+            barberShop.RatersCount = newRatersCount;
 
             await this.barberShopRepository.SaveChangesAsync();
         }

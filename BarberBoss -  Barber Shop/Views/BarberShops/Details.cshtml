@@ -1,6 +1,6 @@
 ﻿@model BarberBoss___Barber_Shop.ViewModels.BarberShops.BarberShopWithServicesViewModel
 @{
-    this.ViewData["Title"] = "Salon: " + Model.Name;
+    this.ViewData["Title"] = "Barber Shop: " + Model.Name;
 }
 
 <div class="row row-eq-height">
@@ -10,8 +10,8 @@
             <div class="info_image"><img src="@Model.ImageUrl" alt=""></div>
             <div class="info_content">
                 <div class="info_title">@Model.Name</div>
-                <div class="info_text">Category: <strong>@Model.CategoryName</strong></div>
-                <div class="info_text">City: <strong>@Model.CityName</strong></div>
+                <div class="info_text">Category: <strong>@Model.BarberServiceName</strong></div>
+                <div class="info_text">City: <strong>@Model.TownName</strong></div>
                 <div class="info_text">Address: <strong>@Model.Address</strong></div>
                 <div class="info_text">
                     Rating: &nbsp;&nbsp;
@@ -42,7 +42,7 @@
                                 <div class="tab_list_text"><p>@service.ServiceDescription</p></div>
                                 <div class="button info_button">
                                     <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment"
-                                   asp-route-salonId="@service.BarberShopId" asp-route-serviceId="@service.ServiceId">
+                                   asp-route-barberShopId="@service.BarberShopId" asp-route-serviceId="@service.ServiceId">
                                         <span>book now</span><span>book now</span>
                                     </a>
                                 </div>

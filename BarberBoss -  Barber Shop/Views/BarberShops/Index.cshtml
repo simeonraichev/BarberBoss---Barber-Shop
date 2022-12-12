@@ -1,13 +1,13 @@
 ﻿@model BarberBoss___Barber_Shop.ViewModels.BarberShops.BarberShopPaginatedListViewModel
 @{
-    this.ViewData["Title"] = "Beauty Salons";
+    this.ViewData["Title"] = "Barber Shops";
 }
 
 <div>
-    @await Component.InvokeAsync("CategoriesSimpleList")
+    @await Component.InvokeAsync("BarberServiceSimpleList")
 </div>
 <div class="text-center text-dark pb-5">
-    <h2><strong>@this.ViewData["CategoryName"]?.ToString()</strong></h2>
+    <h2><strong>@this.ViewData["BarberServiceName"]?.ToString()</strong></h2>
 </div>
 
 @if (!Model.BarberShops.Any())
@@ -16,27 +16,27 @@
 }
 
 <div class="row row-eq-height">
-    @foreach (var salon in Model.BarberShops)
+    @foreach (var barberShop in Model.BarberShops)
     {
         <div class="col-xl-3 col-md-6">
             <div class="doctor">
-                <div class="doctor_image"><img src="@salon.ImageUrl" alt=""></div>
+                <div class="doctor_image"><img src="@barberShop.ImageUrl" alt=""></div>
                 <div class="doctor_content">
                     <div class="doctor_name">
-                        <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">@salon.Name</a>
+                        <a asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@barberShop.Id">@barberShop.Name</a>
                     </div>
-                    <div class="doctor_title"><strong>@salon.CategoryName</strong></div>
-                    <div class="doctor_title">@salon.TownName, @salon.Address</div>
+                    <div class="doctor_title"><strong>@barberShop.CategoryName</strong></div>
+                    <div class="doctor_title">@barberShop.TownName, @barberShop.Address</div>
                     <div class="doctor_title ml-2">
                         <div class="button button_1 elements_button mt-2">
-                            <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">
+                            <a asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@barberShop.Id">
                                 <span>See Services</span>
                                 <span>See Services</span>
                             </a>
                         </div>
                     </div>
                     <div class="doctor_link">
-                        <a asp-area="" asp-controller="Salons" asp-action="Details" asp-route-id="@salon.Id">+</a>
+                        <a asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@barberShop.Id">+</a>
                     </div>
                 </div>
             </div>

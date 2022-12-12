@@ -128,7 +128,7 @@ namespace BarberBoss___Barber_Shop.Services.Data.Appointments
                 .All()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
-            appointment.IsSalonRatedByTheUser = true;
+            appointment.IsBarberShopRatedByTheUser = true;
             await this.appointmentsRepository.SaveChangesAsync();
         }
     }
