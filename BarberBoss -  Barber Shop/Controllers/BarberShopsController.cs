@@ -28,14 +28,14 @@ namespace BarberBoss____Barber_Shop.Controllers
         {
             if (sortId != null)
             {
-                var category = await this.barberServicesService
+                var barberService = await this.barberServicesService
                     .GetByIdAsync<BarberServiceSimpleViewModel>(sortId.Value);
-                if (category == null)
+                if (barberService == null)
                 {
                     return new StatusCodeResult(404);
                 }
 
-                this.ViewData["CategoryName"] = category.Name;
+                this.ViewData["CategoryName"] = barberService.Name;
             }
             this.ViewData["CurrentSort"] = sortId;
 

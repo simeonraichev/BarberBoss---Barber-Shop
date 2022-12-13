@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.Web.Infrastructure.ViewComponents
 {
-    public class PastAppointmentsViewComponent : ViewComponent
+    public class PastAppointments : ViewComponent
     {
         private readonly IAppointmentsService appointmentsService;
         private readonly UserManager<MyApplicationUser> userManager;
 
-        public PastAppointmentsViewComponent(
+        public PastAppointments(
             IAppointmentsService appointmentsService,
             UserManager<MyApplicationUser> userManager)
         {

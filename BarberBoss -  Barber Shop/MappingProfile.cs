@@ -9,6 +9,9 @@ namespace BarberBoss____Barber_Shop
         public MappingProfile()
         {
             this.CreateMap<BarberShop, BarberShopViewModel>();
+
+            this.CreateMap<BarberShopViewModel, BarberShop>();
+
         }
     }
 }

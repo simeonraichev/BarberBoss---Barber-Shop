@@ -34,6 +34,7 @@
     <ProjectReference Include="..\BarberBoss - Barber Shop.Services.Messaging\BarberBoss - Barber Shop.Services.Messaging.csproj" />
     <ProjectReference Include="..\BarberBoss - Barber Shop.Services\BarberBoss - Barber Shop.Services.csproj" />
     <ProjectReference Include="..\BarberBoss - Barber Shop.ViewModels\BarberBoss - Barber Shop.ViewModels.csproj" />
+    <ProjectReference Include="..\BarberBoss - Barber Shop.Web.Infrastructure\BarberBoss - Barber Shop.Web.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

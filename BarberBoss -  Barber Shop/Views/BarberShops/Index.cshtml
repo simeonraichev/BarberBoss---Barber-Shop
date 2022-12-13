@@ -4,7 +4,7 @@
 }
 
 <div>
-    @await Component.InvokeAsync("BarberServiceSimpleList")
+    @await Component.InvokeAsync("BarberServicesSimpleList")
 </div>
 <div class="text-center text-dark pb-5">
     <h2><strong>@this.ViewData["BarberServiceName"]?.ToString()</strong></h2>
@@ -25,7 +25,7 @@
                     <div class="doctor_name">
                         <a asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@barberShop.Id">@barberShop.Name</a>
                     </div>
-                    <div class="doctor_title"><strong>@barberShop.CategoryName</strong></div>
+                    <div class="doctor_title"><strong>@barberShop.BarberServiceName</strong></div>
                     <div class="doctor_title">@barberShop.TownName, @barberShop.Address</div>
                     <div class="doctor_title ml-2">
                         <div class="button button_1 elements_button mt-2">
@@ -55,7 +55,7 @@
            asp-route-sortId="@ViewData["CurrentSort"]"
            asp-route-pageNumber="@(Model.BarberShops.PageIndex - 1)"
            asp-route-currentFilter="@ViewData["CurrentFilter"]"
-           style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @prevDisabled">
+           style="color: #00008B" class="btn btn-outline-secondary btn-lg @prevDisabled">
             &#x2190; Previous Page
         </a>
     </div>
@@ -64,7 +64,7 @@
            asp-route-sortId="@ViewData["CurrentSort"]"
            asp-route-pageNumber="@(Model.BarberShops.PageIndex + 1)"
            asp-route-currentFilter="@ViewData["CurrentFilter"]"
-           style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @nextDisabled">
+           style="color: #00008B" class="btn btn-outline-secondary btn-lg @nextDisabled">
             Next Page &#x2192;
         </a>
     </div>
