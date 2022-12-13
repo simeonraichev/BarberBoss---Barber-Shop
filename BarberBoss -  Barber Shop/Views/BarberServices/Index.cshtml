@@ -4,6 +4,11 @@
     this.ViewData["Title"] = "Barber Services";
 }
 
+@if (!Model.BarberServices.Any())
+{
+    <h2 class="ml-5">No results!</h2>
+}
+
 <div class="row">
     <!-- News Posts -->
     @foreach (var service in Model.BarberServices)

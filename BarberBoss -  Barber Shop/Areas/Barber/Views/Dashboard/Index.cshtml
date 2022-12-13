@@ -1,0 +1,11 @@
+﻿@model BarberBoss___Barber_Shop.ViewModels.BarberShops.BarberShopsListViewModel
+@{
+    this.ViewData["Title"] = "Barber Dashboard";
+}
+
+<h3>Welcome to Barbers Dashboard!</h3>
+<p>Here are the barbershop you can work with:</p>
+
+<div>
+    @await Component.InvokeAsync("BarberShopsSimpleList")
+</div>

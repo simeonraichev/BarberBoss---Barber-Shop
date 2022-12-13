@@ -1,0 +1,10 @@
+﻿@model BarberBoss___Barber_Shop.ViewModels.BarberShops.BarberShopsSimpleListViewModel
+@{
+    this.ViewData["Title"] = "Default";
+}
+
+@foreach (var barberShop in Model.BarberShops)
+{
+    <a asp-area="Barber" asp-controller="BarberShops" asp-action="Details" asp-route-id="@barberShop.Id"
+       class="list-group-item list-group-item-action bg-light">@barberShop.Name</a>
+}
