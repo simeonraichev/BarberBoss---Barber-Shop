@@ -21,14 +21,27 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShopsServices
 
         public async Task<T> GetByIdAsync<T>(string barberShopId, int serviceId)
         {
-            var salonService =
+            var barberShopService =
                 await this.barberShopsServicesRepository
                 .All()
                 .Where(x => x.BarberShopId == barberShopId && x.ServiceId == serviceId)
                 .To<T>().FirstOrDefaultAsync();
-            return salonService;
+            return barberShopService;
         }
 
+        public async Task ChangeAvailableStatusAsync(string barberShopId, int serviceId)
+        {
+            var barberShopService =
+                await this.barberShopsServicesRepository
+                .All()
+                .Where(x => x.BarberShopId == barberShopId
+                            && x.ServiceId == serviceId)
+                .FirstOrDefaultAsync();
+
+            barberShopService.Available = !barberShopService.Available;
+
+            await this.barberShopsServicesRepository.SaveChangesAsync();
+        }
         public async Task AddAsync(string barberShopId, IEnumerable<int> servicesIds)
         {
             foreach (var serviceId in servicesIds)
@@ -55,20 +68,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShopsServices
                     Available = true,
                 });
             }
-
-            await this.barberShopsServicesRepository.SaveChangesAsync();
-        }
-
-        public async Task ChangeAvailableStatusAsync(string barberShopId, int serviceId)
-        {
-            var barberShopService =
-                await this.barberShopsServicesRepository
-                .All()
-                .Where(x => x.BarberShopId == barberShopId
-                            && x.ServiceId == serviceId)
-                .FirstOrDefaultAsync();
-
-            barberShopService.Available = !barberShopService.Available;
 
             await this.barberShopsServicesRepository.SaveChangesAsync();
         }

@@ -11,12 +11,12 @@
         @foreach (var barberService in Model.BarberServices)
         {
             <a class="dropdown-item" 
-               asp-area="" asp-controller="Salons" asp-action="Index" asp-route-sortId="@barberService.Id">
+               asp-area="" asp-controller="BarberShops" asp-action="Index" asp-route-sortId="@barberService.Id">
                 @barberService.Name (@barberService.BarberShopsCount)
             </a>
         }
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-area="" asp-controller="BarberShop" asp-action="Index">All BarberShop</a>
+        <a class="dropdown-item" asp-area="" asp-controller="BarberShop" asp-action="Index">All BarberShops</a>
     </div>
 </div>
 

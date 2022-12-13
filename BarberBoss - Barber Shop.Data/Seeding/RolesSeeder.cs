@@ -16,7 +16,7 @@ namespace BarberBoss___Barber_Shop.Data.Seeding
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
             await SeedRoleAsync(roleManager, "Administrator");
-            await SeedRoleAsync(roleManager, "Manager");
+            await SeedRoleAsync(roleManager, "Barber");
         }
 
         private static async Task SeedRoleAsync(RoleManager<ApplicationRole> roleManager, string roleName)

@@ -1,6 +1,6 @@
 ﻿@model BarberBoss___Barber_Shop.ViewModels.BarberShops.BarberShopWithServicesViewModel
 @{
-    this.ViewData["Title"] = "Salon Manager: " + Model.Name;
+    this.ViewData["Title"] = "Barber: " + Model.Name;
 }
 
 <div class="row row-eq-height">
@@ -58,7 +58,7 @@
                             <form method="post">
                                 <button type="submit" class="btn btn-outline-info btn-sm"
                                         asp-area="Barber" asp-controller="BarberShops" asp-action="ChangeServiceAvailableStatus" 
-                                        asp-route-salonId="@Model.Id" asp-route-serviceId="@service.ServiceId">
+                                        asp-route-barberShopId="@Model.Id" asp-route-serviceId="@service.ServiceId">
                                     Change
                                 </button>
                             </form>
