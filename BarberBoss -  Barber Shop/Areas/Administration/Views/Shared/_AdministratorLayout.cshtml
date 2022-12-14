@@ -1,0 +1,93 @@
+﻿@using BarberBoss___Barber_Shop.Common
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@this.ViewData["Title"] - BarberBoss - BarberShop</title>
+
+    <environment names="Development">
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/OwlCarousel2-2.2.1/animate.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/responsive.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/sidebar.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/OwlCarousel2-2.2.1/animate.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/responsive.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/sidebar.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+
+    @this.RenderSection("Styles", required: false)
+</head>
+<body>
+
+    <div class="super_container">
+
+        <partial name="_AdminMenuPartial" />
+
+        <partial name="_AdminHeaderPartial" />
+
+        <div style="padding-top: 90px;">
+
+            <div class="text-center">
+                <a style="color: #00008B" asp-area="" asp-controller="Home" asp-action="Index"><strong>BACK TO HOME PAGE</strong></a>
+            </div>
+            <hr class="bg-dark mx-4" style="height: 6px;" />
+            <div class="d-flex" id="wrapper">
+
+                <!-- Sidebar -->
+                <partial name="_AdminSidebarPartial" />
+
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    <div class="container-fluid">
+                        <div class="col-12">
+                            <main role="main">
+                                @this.RenderBody()
+                            </main>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr class="bg-dark mx-4" style="height: 6px;" />
+        
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/js/popper.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js" asp-append-version="true"></script>
+        <script src="~/plugins/easing/easing.js" asp-append-version="true"></script>
+        <script src="~/plugins/parallax-js-master/parallax.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/js/popper.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js" asp-append-version="true"></script>
+        <script src="~/plugins/easing/easing.js" asp-append-version="true"></script>
+        <script src="~/plugins/parallax-js-master/parallax.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @this.RenderSection("Scripts", required: false)
+</body>
+</html>

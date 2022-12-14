@@ -125,17 +125,11 @@ namespace BarberBossBarberShop.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MyApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_MyApplicationUserId",
-                        column: x => x.MyApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AspNetUserClaims_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -151,17 +145,11 @@ namespace BarberBossBarberShop.Data.Migrations
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    MyApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_MyApplicationUserId",
-                        column: x => x.MyApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -175,8 +163,7 @@ namespace BarberBossBarberShop.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    MyApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -187,11 +174,6 @@ namespace BarberBossBarberShop.Data.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_MyApplicationUserId",
-                        column: x => x.MyApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -252,7 +234,7 @@ namespace BarberBossBarberShop.Data.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OwnerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    OwnerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     BarberServiceId = table.Column<int>(type: "int", nullable: false),
                     TownId = table.Column<int>(type: "int", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: false),
@@ -290,11 +272,10 @@ namespace BarberBossBarberShop.Data.Migrations
                 name: "BarberShopsServices",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     BarberShopId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ServiceId = table.Column<int>(type: "int", nullable: false),
                     Available = table.Column<bool>(type: "bit", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -302,7 +283,7 @@ namespace BarberBossBarberShop.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BarberShopsServices", x => x.Id);
+                    table.PrimaryKey("PK_BarberShopsServices", x => new { x.BarberShopId, x.ServiceId });
                     table.ForeignKey(
                         name: "FK_BarberShopsServices_BarberShops_BarberShopId",
                         column: x => x.BarberShopId,
@@ -326,9 +307,10 @@ namespace BarberBossBarberShop.Data.Migrations
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BarberShopId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ServiceId = table.Column<int>(type: "int", nullable: false),
-                    BarberShopServiceId = table.Column<int>(type: "int", nullable: false),
+                    BarberShopServiceBarberShopId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    BarberShopServiceServiceId = table.Column<int>(type: "int", nullable: false),
                     Confirmed = table.Column<bool>(type: "bit", nullable: true),
-                    IsSalonRatedByTheUser = table.Column<bool>(type: "bit", nullable: true),
+                    IsBarberShopRatedByTheUser = table.Column<bool>(type: "bit", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -344,10 +326,10 @@ namespace BarberBossBarberShop.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Appointments_BarberShopsServices_BarberShopServiceId",
-                        column: x => x.BarberShopServiceId,
+                        name: "FK_Appointments_BarberShopsServices_BarberShopServiceBarberShopId_BarberShopServiceServiceId",
+                        columns: x => new { x.BarberShopServiceBarberShopId, x.BarberShopServiceServiceId },
                         principalTable: "BarberShopsServices",
-                        principalColumn: "Id",
+                        principalColumns: new[] { "BarberShopId", "ServiceId" },
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Appointments_BarberShops_BarberShopId",
@@ -369,9 +351,9 @@ namespace BarberBossBarberShop.Data.Migrations
                 column: "BarberShopId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Appointments_BarberShopServiceId",
+                name: "IX_Appointments_BarberShopServiceBarberShopId_BarberShopServiceServiceId",
                 table: "Appointments",
-                column: "BarberShopServiceId");
+                columns: new[] { "BarberShopServiceBarberShopId", "BarberShopServiceServiceId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_IsDeleted",
@@ -406,29 +388,14 @@ namespace BarberBossBarberShop.Data.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserClaims_MyApplicationUserId",
-                table: "AspNetUserClaims",
-                column: "MyApplicationUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserLogins_MyApplicationUserId",
-                table: "AspNetUserLogins",
-                column: "MyApplicationUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_MyApplicationUserId",
-                table: "AspNetUserRoles",
-                column: "MyApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
@@ -476,11 +443,6 @@ namespace BarberBossBarberShop.Data.Migrations
                 name: "IX_BarberShops_TownId",
                 table: "BarberShops",
                 column: "TownId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BarberShopsServices_BarberShopId",
-                table: "BarberShopsServices",
-                column: "BarberShopId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BarberShopsServices_IsDeleted",

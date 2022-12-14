@@ -1,5 +1,4 @@
 ﻿//using BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding;
-using BarberBoss___Barber_Shop.Data.Seeding.CustomSeeding;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;

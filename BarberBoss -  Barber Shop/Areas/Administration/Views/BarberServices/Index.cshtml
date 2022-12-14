@@ -1,5 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BarberBoss___Barber_Shop.ViewModels.BarberServices.BarberServicesListViewModel
+@using BarberBoss___Barber_Shop.Common
 @{
+    this.ViewData["Title"] = "Categories";
 }
+
+<h2>
+    All Categories (@Model.BarberServices.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="BarberServices" asp-action="AddBarberService">Add New Barber Service</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Description</th>
+            <th scope="col">BarberServices</th>
+            <th scope="col">BarberShop</th>
+            <th scope="col">Delete Button</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var barberService in this.Model.BarberServices)
+        {
+            <tr>
+                <th scope="row">@barberService.Name</th>
+                <td>
+                    <img class="align-self-center" src="@barberService.ImageUrl" style="width:180px;height:120px;">
+                </td>
+                <td>@barberService.Description</td>
+                <td>@barberService.ServicesCount</td>
+                <td>@barberService.BarberShopsCount</td>
+                <td>
+                    @if (barberService.Id <= 6)
+                    {
+                        <div class="text-muted" style="font-size:smaller">
+                            Seeded Data <br />Cannot Be Deleted
+                        </div>
+                    }
+                    else
+                    {
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Administration" asp-controller="BarberService" asp-action="DeleteBarberService" asp-route-id="@barberService.Id">
+                                Delete
+                            </button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

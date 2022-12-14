@@ -18,24 +18,25 @@
 <div class="row row-eq-height">
     @foreach (var barberShop in Model.BarberShops)
     {
-        <div class="col-xl-3 col-md-6">
-            <div class="doctor">
-                <div class="doctor_image"><img src="@barberShop.ImageUrl" alt=""></div>
+        <div class="col-lg-4 align-center {text-align: center; margin: auto;}">
+            <hr class="bg-dark mx-4" style="height: 6px;" />
+            <div class="card col-12 " style="width: 38rem;">
+                <div class="card col-4" style="width: 35rem;"><img class="card-img-top" style="width: 35rem;" src="@barberShop.ImageUrl" alt=""></div>
+                <p></p>
                 <div class="doctor_content">
-                    <div class="doctor_name">
+                    <div class="h4 text-center font-weight-bold">
                         <a asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@barberShop.Id">@barberShop.Name</a>
                     </div>
-                    <div class="doctor_title"><strong>@barberShop.BarberServiceName</strong></div>
+                    <div class="font-italic"><strong>@barberShop.BarberServiceName</strong></div>
                     <div class="doctor_title">@barberShop.TownName, @barberShop.Address</div>
                     <div class="doctor_title ml-2">
-                        <div class="button button_1 elements_button mt-2">
+                        <div class="btn btn-outline-primary">
                             <a asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@barberShop.Id">
-                                <span>See Services</span>
                                 <span>See Services</span>
                             </a>
                         </div>
                     </div>
-                    <div class="doctor_link">
+                    <div class="h3 text-lg-right">
                         <a asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@barberShop.Id">+</a>
                     </div>
                 </div>

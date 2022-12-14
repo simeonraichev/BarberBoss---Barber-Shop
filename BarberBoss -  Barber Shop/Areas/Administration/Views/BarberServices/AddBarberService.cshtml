@@ -1,5 +1,46 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BarberBoss___Barber_Shop.ViewModels.BarberServices.BarberServiceInputModel
 @{
+    this.ViewData["Title"] = "Add Barber Service";
+}
+
+<div class="col-lg-6">
+    <h2>New Barber Service</h2>
+    <form method="post" enctype="multipart/form-data" class="pt-4">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" asp-for="@Model.Name" class="form-control" required="required">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Image</label>
+            <div class="col-sm-10">
+                <input type="file" asp-for="@Model.Image" class="form-control-file image-upload" required="required" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <textarea type="text" asp-for="@Model.Description" class="form-control" required="required"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 text-right">
+                <button type="submit" class="btn btn-success"
+                        asp-area="Administration" asp-controller="BarberServices" asp-action="AddBarberService">
+                    Add Barber Service
+                </button>
+            </div>
+            <div class="col-sm-6">
+                <a class="btn btn-danger" asp-area="Administration" asp-controller="BarberServices" asp-action="Index">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/upload-image.js" asp-append-version="true"></script>
 }
