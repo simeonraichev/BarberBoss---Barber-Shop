@@ -52,7 +52,7 @@ namespace BarberBoss____Barber_Shop.Controllers
             var barberShopService = await this.barberShopsServicesService.GetByIdAsync<BarberShopsServiceSimpleViewModel>(barberShopId, serviceId);
             if (barberShopService == null || !barberShopService.Available)
             {
-                return this.View("UnavailableService");
+                return this.View("CantBeUsedRightNow");
             }
 
             var viewModel = new AppointmentsInputModel

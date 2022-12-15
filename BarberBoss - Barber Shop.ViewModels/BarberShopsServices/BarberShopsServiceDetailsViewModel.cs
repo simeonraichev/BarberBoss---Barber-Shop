@@ -1,5 +1,5 @@
 ﻿using BarberBoss____Barber_Shop.Services.Mapping;
-using BarberBoss___Barber_Shop.Services.Data.BarberShops;
+using BarberBoss___Barber_Shop.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,9 +1,9 @@
 ﻿using BarberBoss___Barber_Shop.Data.Common.Repositories;
 using BarberBoss___Barber_Shop.Data.Models;
 using BarberBoss___Barber_Shop.Services.Mapping;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

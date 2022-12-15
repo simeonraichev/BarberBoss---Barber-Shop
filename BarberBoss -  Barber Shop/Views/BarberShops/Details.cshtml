@@ -6,12 +6,12 @@
 <div class="row row-eq-height">
     <!-- Info Box -->
     <div class="col-lg-4 info_box_col">
-        <div class="info_box">
-            <div class="info_image"><img src="@Model.ImageUrl" alt=""></div>
+        <div class="card col-12 " style="width: 38rem;">
+            <div class="info_image"><img class="card-img-top" style="width: 35rem;" src="@Model.ImageUrl" alt=""></div>
             <div class="info_content">
                 <div class="info_title">@Model.Name</div>
-                <div class="info_text">Category: <strong>@Model.BarberServiceName</strong></div>
-                <div class="info_text">City: <strong>@Model.TownName</strong></div>
+                <div class="info_text">Barber Service: <strong>@Model.BarberServiceName</strong></div>
+                <div class="info_text">Town: <strong>@Model.TownName</strong></div>
                 <div class="info_text">Address: <strong>@Model.Address</strong></div>
                 <div class="info_text">
                     Rating: &nbsp;&nbsp;
@@ -31,21 +31,24 @@
     <!-- Panel -->
     <div class="col-lg-7">
         <h2>Services:</h2>
-        <div class="tab_panel active">
+        <div class="tab_panel-active">
             <div class="tab_panel_content">
-                <div class="tab_list">
-                    <ul>
-                        @foreach (var service in Model.Services)
+                <div class="bg-secondary text-white rounded">
+                    <ul class="border border-3 border-info rounded">
+                        @foreach (var service in Model.Services.Where(x => x.Available == true))
                         {
+                                        <hr class="bg-dark mx-8" style="height: 6px;" />
+
                             <li>
-                                <div class="tab_list_title">@service.ServiceName</div>
-                                <div class="tab_list_text"><p>@service.ServiceDescription</p></div>
-                                <div class="button info_button">
-                                    <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment"
-                                   asp-route-barberShopId="@service.BarberShopId" asp-route-serviceId="@service.ServiceId">
-                                        <span>book now</span><span>book now</span>
+                                <div class="h5 text-left font-weight-bold">@service.ServiceName</div>
+                                <div class="h7 font-italic"><p>@service.ServiceDescription</p></div>
+                                <div class="btn btn-primary">
+                                    <a asp-area="" asp-controller="Appointments" asp-action="BookAnAppointment"
+                                        asp-route-barberShopId="@service.BarberShopId" asp-route-serviceId="@service.ServiceId">
+                                        <span>BOOK NOW</span>
                                     </a>
                                 </div>
+                                <p></p>
                             </li>
                         }
                     </ul>

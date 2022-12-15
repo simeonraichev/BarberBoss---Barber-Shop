@@ -104,22 +104,22 @@
 
         <div class="col-lg-6">
             <div>
-                @await Component.InvokeAsync("BarberShopsServiceDetails", new { Model.BarberShopId, Model.ServiceId })
+                @await Component.InvokeAsync("BarberShopServiceDetails", new { Model.BarberShopId, Model.ServiceId })
             </div>
             <form method="post" enctype="multipart/form-data">
                 <input asp-for="@Model.BarberShopId" value="@Model.BarberShopId" class="form-control" hidden>
                 <input asp-for="@Model.ServiceId" value="@Model.ServiceId" class="form-control" hidden>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Date</label>
-                    <div class="col-sm-10">
-                        <div id="selectedDate" asp-for="@Model.Date" class="form-control" hidden></div>
-                        <input asp-for="@Model.Date" value="" class="form-control" required readonly />
+                    <div class="col-sm-10" >
+                        <div styleid="selectedDate" asp-for="@Model.Date" class="form-control" hidden></div>
+                        <input asp-for="@Model.Date" value="" class="form-control color:cadetblue" required readonly />
                         <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Time</label>
-                    <div class="col-sm-10">
+                    <div class="col">
                         <div id="selectedTime" asp-for="@Model.Time" class="form-control" hidden></div>
                         <input asp-for="@Model.Time" value="" class="form-control" required readonly />
                         <span asp-validation-for="Time" class="text-danger"></span>
@@ -127,16 +127,16 @@
                 </div>
                 <div class="form-group row mt-4">
                     <div class="col-sm-10">
-                        <button type="submit" class="button button-large button_1 elements_button my-2"
-                                asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment">
-                            Make An Appointment
+                        <button type="submit" class="btn btn-primary"
+                                asp-area="" asp-controller="Appointments" asp-action="BookAnAppointment">
+                            Book An Appointment
                         </button>
                     </div>
                 </div>
             </form>
-            <div class="button button-large button_2 elements_button">
+            <div class="btn btn-primary">
                 <a asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@Model.BarberShopId">
-                    <span>Cancel</span><span>Cancel</span>
+                    <span>Cancel</span>
                 </a>
             </div>
             <div asp-validation-summary="All" data-valmsg-summary="true"></div>

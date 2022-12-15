@@ -18,7 +18,6 @@ namespace BarberBoss___Barber_Shop.Data
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-
                 context.Database.EnsureCreated();
 
                 //Towns
@@ -50,9 +49,9 @@ namespace BarberBoss___Barber_Shop.Data
                            Name = "Barber"
                        }
                    });
+                    context.SaveChanges();
                 }
 
-                context.SaveChanges();
                 if (!context.BarberShops.Any())
                 {
                     context.BarberShops.AddRange(new List<BarberShop>()
@@ -177,8 +176,309 @@ namespace BarberBoss___Barber_Shop.Data
                     context.SaveChanges();
 
                 }
+                if (!context.Services.Any())
+                {
+                    context.Services.AddRange(new List<Service>()
+                    {
+                        //Shave & Haircut
+                        new Service
+                        {
+                            Name = "Men's Haircut",
+                            Description = "Men's haircuts from the best barbers in the country. Cutting with the highest quality technologies and using high quality products.",
+                            BarberServiceId = 19
+                        },
+                        new Service
+                        {
+                            Name = "Crew Cut",
+                            Description = "Haircut in a way that is very popular these days. Keep up with fashion!",
+                            BarberServiceId = 19
+                        },
+                        new Service
+                        {
+                            Name = "Regular Cut",
+                            Description = "Haircut in a simple way, with which you improve your vision radically!",
+                            BarberServiceId = 19
+                        },
+                        new Service
+                        {
+                            Name = "Hair Color",
+                            Description = "Dye your hair in every color you can think of. Keep up with fashion and come to our salons to change your look with the best quality hair products.",
+                            BarberServiceId = 19
+                        },
+
+                        //Cream & Shampoo
+                        new Service
+                        {
+                            Name = "Eyebrowс",
+                            Description = "Got eyebrows you don't like? Come to our barber shops to change that. We are expecting you!",
+                            BarberServiceId = 20
+                        },
+                         new Service
+                        {
+                             Name = "Skin Care",
+                            Description = "Got skin growths you don't like? Come to our barbershops to take care of your skin hygiene! ",
+                            BarberServiceId = 20
+                        },
+                          new Service
+                        {
+                              Name = "Men's Facials",
+                            Description = "Facial cleaning by professionals in the field, welcome to improve your vision radically!",
+                            BarberServiceId = 20
+                        },
+                           new Service
+                        {
+                               Name = "Facials - Teen",
+                            Description = "Are you a teenager and have a lot of skin problems due to puberty? Come to our barbershops, where we will take care of you and your skin. We expect you!",
+                            BarberServiceId = 20
+                        },
+
+                        //Mustache Expert
+                        new Service
+                        {
+                            Name = "Combing",
+                            Description = "Want to have a mustache but don't know how to style it? You are in the right place! Make an appointment and let us help you look better!",
+                            BarberServiceId = 21
+                        },
+                         new Service
+                        {
+                            Name = "HairCondition",
+                            Description = "Care for your mustache with the highest quality products and procedures! We expect you!",
+                            BarberServiceId = 21
+                        },
+                          new Service
+                        {
+                            Name = "Wax",
+                            Description = "Don't know how to shape your mustache in your dream way? Come to our barbershops and professionals will help you deal with it!",
+                            BarberServiceId = 21
+                        },
+
+                        //Haircut Styler
+                        new Service
+                        {
+                            Name = "Fade Haircuts",
+                            Description = "Make a hairstyle with a fashionable style in the society! We expect you!",
+                            BarberServiceId = 22
+                        },
+                         new Service
+                        {
+                            Name = "Taper Fade Cut",
+                            Description = "Make a hairstyle with a fashionable style in the society! We expect you!",
+                            BarberServiceId = 22
+                        },
+                          new Service
+                        {
+                            Name = "Cropped Cut",
+                            Description = "Make a hairstyle with a fashionable style in the society! We expect you!",
+                            BarberServiceId = 22
+                        },
+                           new Service
+                        {
+                            Name = "Comb Over Fade",
+                            Description = "Make a hairstyle with a fashionable style in the society! We expect you!",
+                            BarberServiceId = 22
+                        },
+
+                        //Razor For Beards
+                        new Service
+                        {
+                            Name = "Beard Аlignment",
+                            Description = "Shape your beard in the best possible way! Come to our barbershops and leave yourself in the hands of our professional barbers.",
+                            BarberServiceId = 23
+                        },
+                        new Service
+                        {
+                            Name = "Beard Removal",
+                            Description = "Don't like your beard? Come to our barbershops and we will take care of your wish! We expect you!",
+                            BarberServiceId = 23
+                        },
+                        new Service
+                        {
+                            Name = "Beard Cosmetic",
+                            Description = "Want your beard to feel and look good? Come to our barbershops and we will take care of it!",
+                            BarberServiceId = 23
+                        },
+
+                        //Haircomb
+                        new Service
+                        {
+                            Name = "Hair Styling",
+                            Description = "Do you want your hair to look so that everyone will like it? Come to our barbershops and we will take care of it!",
+                            BarberServiceId = 24
+                        },
+                        new Service
+                        {
+                            Name = "Hair&Dryer",
+                            Description = "What more could you ask for? We expect you?",
+                            BarberServiceId = 24
+                        },
+                        new Service
+                        {
+                            Name = "Premium",
+                            Description = "Do you want your hair to be in perfect shape and with the best cosmetics? The only way is our package Hair&Beard&Cosmetic! Come to our barbershops! We expect you!",
+                            BarberServiceId = 24
+                        },
+                    });
+                    context.SaveChanges();
+                }
+                //BarberShopServices
+                if (!context.BarberShopsServices.Any())
+                {
+                    //var barberShopServices = new List<BarberShopsService>();
+                    //foreach (var barberShop in context.BarberShopsServices)
+                    //{
+                    //    //var barberShopId = barberShop.Id;
+                    //    //var barberServiceId = barberShop.BarberServiceId;
+
+                    //    //foreach (var service in context.Services.Where(x => x.BarberServiceId == barberServiceId))
+                    //    //{
+                    //    //    var serviceId = service.Id;
+
+                    //    //    barberShopServices.Add(new BarberShopsService
+                    //    //    {
+                    //    //        BarberShopId = barberShopId,
+                    //    //        ServiceId = serviceId,
+                    //    //        Available = true,
+                    //    //    });
+                    //    //}
+                    //    Console.WriteLine(barberShop.BarberShopId);
+                    //}\
+                    context.BarberShopsServices.AddRange(new List<BarberShopsService>()
+                    {
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded32a5654b-e3f7-426e-8352-c9a311d5bdd5",
+                            ServiceId = 46,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded32a5654b-e3f7-426e-8352-c9a311d5bdd5",
+                            ServiceId = 47,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded32a5654b-e3f7-426e-8352-c9a311d5bdd5",
+                            ServiceId = 48,
+                            Available = true
+                        },
+
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded3af78164-6a3e-4b39-8673-9442cb32b23d",
+                            ServiceId = 31,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded3af78164-6a3e-4b39-8673-9442cb32b23d",
+                            ServiceId = 32,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded3af78164-6a3e-4b39-8673-9442cb32b23d",
+                            ServiceId = 33,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded3af78164-6a3e-4b39-8673-9442cb32b23d",
+                            ServiceId = 34,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded3fea1f9c-37e6-4980-86e6-666f90a78225",
+                            ServiceId = 35,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded3fea1f9c-37e6-4980-86e6-666f90a78225",
+                            ServiceId = 36,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded3fea1f9c-37e6-4980-86e6-666f90a78225",
+                            ServiceId = 37,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seeded3fea1f9c-37e6-4980-86e6-666f90a78225",
+                            ServiceId = 38,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededa2dd51a1-309a-434b-9ce9-b0cc82d8947e",
+                            ServiceId = 49,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededa2dd51a1-309a-434b-9ce9-b0cc82d8947e",
+                            ServiceId = 50,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededa2dd51a1-309a-434b-9ce9-b0cc82d8947e",
+                            ServiceId = 51,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededea39ed9a-888f-46e0-8281-a0d2824013a2",
+                            ServiceId = 31,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededea39ed9a-888f-46e0-8281-a0d2824013a2",
+                            ServiceId = 32,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededea39ed9a-888f-46e0-8281-a0d2824013a2",
+                            ServiceId = 33,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededea39ed9a-888f-46e0-8281-a0d2824013a2",
+                            ServiceId = 34,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededf73edb4f-3a9c-4be6-bb9b-9430eba8e429",
+                            ServiceId = 39,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededf73edb4f-3a9c-4be6-bb9b-9430eba8e429",
+                            ServiceId = 40,
+                            Available = true
+                        },
+                        new BarberShopsService()
+                        {
+                            BarberShopId = "seededf73edb4f-3a9c-4be6-bb9b-9430eba8e429",
+                            ServiceId = 41,
+                            Available = true
+                        }
+                    });
+                    context.SaveChanges();
+                }
+
             }
         }
     }
 }
+
+
 

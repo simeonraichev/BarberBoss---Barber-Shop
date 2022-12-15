@@ -24,7 +24,7 @@ namespace BarberBoss___Barber_Shop.Data.Models
 
         public virtual Service Service { get; set; }
 
-        public bool Available { get; set; }
+        public bool? Available { get; set; }
 
         public virtual ICollection<Appointment> Appointments { get; set; }
     }

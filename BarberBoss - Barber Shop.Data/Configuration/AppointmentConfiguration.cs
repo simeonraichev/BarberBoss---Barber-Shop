@@ -13,24 +13,24 @@ namespace BarberBoss___Barber_Shop.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Appointment> appointment)
         {
-            //appointment
-            //    .HasOne(a => a.User)
-            //    .WithMany(u => u.Appointments)
-            //    .HasForeignKey(a => a.UserId);
+            appointment
+                .HasOne(a => a.User)
+                .WithMany(u => u.Appointments)
+                .HasForeignKey(a => a.UserId);
 
-            //appointment
-            //    .HasOne(a => a.BarberShop)
-            //    .WithMany(s => s.Appointments)
-            //    .HasForeignKey(a => a.BarberShopId);
+            appointment
+                .HasOne(a => a.BarberShop)
+                .WithMany(s => s.Appointments)
+                .HasForeignKey(a => a.BarberShopId);
 
-            //appointment
-            //    .HasOne(a => a.Service)
-            //    .WithMany(s => s.Appointments)
-            //    .HasForeignKey(a => a.ServiceId);
+            appointment
+                .HasOne(a => a.Service)
+                .WithMany(s => s.Appointments)
+                .HasForeignKey(a => a.ServiceId);
             //appointment
             //    .HasOne(a => a.BarberShopService)
             //    .WithMany(ss => ss.Appointments)
-            //    .HasForeignKey(a => new { a.BarberShopId/*, a.ServiceId */});
+            //    .HasForeignKey(a => a.BarberShopId);
 
         }
     }

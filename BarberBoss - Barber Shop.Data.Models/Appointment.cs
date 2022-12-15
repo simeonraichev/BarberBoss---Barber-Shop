@@ -18,17 +18,17 @@ namespace BarberBoss___Barber_Shop.Data.Models
         public virtual MyApplicationUser User { get; set; }
 
         [Required]
-        public string BarberShopId { get; set; }
+        public string? BarberShopId { get; set; }
 
         public virtual BarberShop BarberShop { get; set; }
 
         public int ServiceId { get; set; }
 
-        public virtual Service Service { get; set; }
+        public virtual Service? Service { get; set; }
 
-        public virtual BarberShopsService BarberShopService { get; set; }
+        public virtual BarberShopsService? BarberShopService { get; set; }
 
-        // The BarberShop can Confirm or Decline an appointment
+        //The BarberShop can Confirm or Decline an appointment
         public bool? Confirmed { get; set; }
 
         public bool? IsBarberShopRatedByTheUser { get; set; }
