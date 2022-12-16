@@ -4,13 +4,13 @@
 }
 
 <div class="btn-group dropright">
-    <button type="button" style="color: #00008B" class="btn btn-outline-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" style="color: #00008B" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Search by BarberService
     </button>
     <div class="dropdown-menu">
         @foreach (var barberService in Model.BarberServices)
         {
-            <a class="dropdown-item" 
+            <a class="dropdown-item " style="color:black" 
                asp-area="" asp-controller="BarberShops" asp-action="Index" asp-route-sortId="@barberService.Id">
                 @barberService.Name (@barberService.BarberShopsCount)
             </a>

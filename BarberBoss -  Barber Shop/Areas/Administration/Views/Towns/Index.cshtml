@@ -1,5 +1,48 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BarberBoss___Barber_Shop.ViewModels.Towns.TownsListViewModel
+@using BarberBoss___Barber_Shop.Common
 @{
+    this.ViewData["Title"] = "Towns";
 }
+
+<h2>
+    All Cities (@Model.Towns.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Towns" asp-action="AddTown">Add New Town</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">BarberShop</th>
+            <th scope="col">Delete Button</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var city in this.Model.Towns)
+        {
+            <tr>
+                <th scope="row">@city.Name</th>
+                <td>@city.BarberShopsCount</td>
+                <td>
+                    @if (city.Id <= 2)
+                    {
+                        <div class="text-muted" style="font-size:smaller">
+                            Seeded Data <br />Cannot Be Deleted
+                        </div>
+                    }
+                    else
+                    {
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Administration" asp-controller="Towns" asp-action="DeleteTown" asp-route-id="@city.Id">
+                                Delete
+                            </button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

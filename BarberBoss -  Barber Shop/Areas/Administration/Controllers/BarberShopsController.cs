@@ -72,10 +72,10 @@ namespace BarberBoss____Barber_Shop.Areas.Administration.Controllers
             //}
 
             // Add BarberShop
-            var barberShoppId = await this.barberShopsService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, imageUrl);
+            var barberShoppId = await this.barberShopsService.AddAsync(input.Name, input.BarberServiceId, input.TownId, input.Address, imageUrl);
 
             // Add to the BarberShop all Services from its BarberServices
-            var servicesIds = await this.servicesService.GetAllIdsByBarberServiceAsync(input.CategoryId);
+            var servicesIds = await this.servicesService.GetAllIdsByBarberServiceAsync(input.BarberServiceId);
             await this.barberShopsServicesService.AddAsync(barberShoppId, servicesIds);
 
             return this.RedirectToAction("Index");

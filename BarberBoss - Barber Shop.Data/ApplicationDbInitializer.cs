@@ -18,6 +18,7 @@ namespace BarberBoss___Barber_Shop.Data
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<MyApplicationUser>>();
                 context.Database.EnsureCreated();
 
                 //Towns
@@ -323,25 +324,6 @@ namespace BarberBoss___Barber_Shop.Data
                 //BarberShopServices
                 if (!context.BarberShopsServices.Any())
                 {
-                    //var barberShopServices = new List<BarberShopsService>();
-                    //foreach (var barberShop in context.BarberShopsServices)
-                    //{
-                    //    //var barberShopId = barberShop.Id;
-                    //    //var barberServiceId = barberShop.BarberServiceId;
-
-                    //    //foreach (var service in context.Services.Where(x => x.BarberServiceId == barberServiceId))
-                    //    //{
-                    //    //    var serviceId = service.Id;
-
-                    //    //    barberShopServices.Add(new BarberShopsService
-                    //    //    {
-                    //    //        BarberShopId = barberShopId,
-                    //    //        ServiceId = serviceId,
-                    //    //        Available = true,
-                    //    //    });
-                    //    //}
-                    //    Console.WriteLine(barberShop.BarberShopId);
-                    //}\
                     context.BarberShopsServices.AddRange(new List<BarberShopsService>()
                     {
                         new BarberShopsService()
@@ -474,7 +456,43 @@ namespace BarberBoss___Barber_Shop.Data
                     });
                     context.SaveChanges();
                 }
-
+                //Seeding Admin Account
+                if (!context.Users.Any(a => a.FirstName == "Admin")) 
+                {
+                    var hasher = new PasswordHasher<MyApplicationUser>();
+                    var adminUser = new MyApplicationUser();
+                   
+                    context.Users.AddRange(new List<MyApplicationUser>()
+                    {
+                        new MyApplicationUser()
+                        {
+                            Id = "seededAdminb8633e2d-a33b-45e6-8329-1958b3252bbd",
+                            FirstName = "Admin",
+                            LastName = "One",
+                            UserName = "admin@gmail.com",
+                            NormalizedUserName = "ADMIN@GMAIL.COM",
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = Guid.NewGuid().ToString("D"),
+                            PasswordHash = hasher.HashPassword(adminUser, "Password"),
+                            LockoutEnabled = true,
+                        }
+                });
+                    context.SaveChanges();
+                }
+                //Seeding Admin Account in Role Administrator
+                //if (!context.UserRoles.Any())
+                //{
+                //    context.UserRoles.AddRange(new List<IdentityUserRole>()
+                //    {
+                //        new IdentityUserRole()
+                //        {
+                //            UserId = "",
+                //        }
+                //    });
+                //    context.SaveChanges();
+                //}
             }
         }
     }

@@ -56,6 +56,12 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="BarberServices" asp-action="Index">Services</a>
                     </li>
+                    @if (this.User.IsInRole("Administrator"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Administrator Dashboard</a>
+                        </li>
+                    }
                 </ul>
 
 
@@ -73,15 +79,11 @@
                 }
                 else
                 {
-                    @*<div class="d-flex align-items-center">
-                <a class="btn btn-primary btn-dark me-3" asp-area="" asp-controller="Appointments" asp-action="Index">
-                My Appointments
-                </a>
 
-                </div>*@
                     <form class="d-flex align-items-right" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
                         <button class="btn btn-primary btn-dark me-2" type="submit">Logout</button>
                     </form>
+                    
                 }
             </div>
 

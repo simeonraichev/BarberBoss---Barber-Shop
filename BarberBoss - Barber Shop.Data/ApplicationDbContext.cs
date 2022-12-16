@@ -1,5 +1,6 @@
 ﻿using BarberBoss___Barber_Shop.Data.Common.Models;
 using BarberBoss___Barber_Shop.Data.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -51,6 +52,7 @@ namespace BarberBoss___Barber_Shop.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
@@ -76,6 +78,13 @@ namespace BarberBoss___Barber_Shop.Data
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+            builder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string>
+            {
+                RoleId = "66060726-5520-4b59-96d8-9c9c1b9c43b6",
+                UserId = "seededAdminb8633e2d-a33b-45e6-8329-1958b3252bbd"
+            }
+        );
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

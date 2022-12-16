@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BarberBoss____Barber_Shop.Areas.Administration.Controllers
 {
-    [Authorize("Administrator")]
+    [Authorize(Roles = "Administrator")]
     [Area("Administration")]
     public class AdministrationController : BaseController
     {

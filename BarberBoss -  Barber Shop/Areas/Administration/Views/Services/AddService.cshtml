@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BarberBoss___Barber_Shop.ViewModels.Services.ServiceInputModel
 @{
+    this.ViewData["Title"] = "Add Service";
+    var barberService = this.ViewData["BarberServices"] as SelectList;
 }
+
+<div class="col-lg-12">
+    <h2>New Service</h2>
+    <form method="post" enctype="multipart/form-data" class="pt-4">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" asp-for="@Model.Name" class="form-control" required="required">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-6 col-form-label">BarberService</label>
+            <div class="col-sm-10">
+                <select asp-for="@Model.BarberServiceId" class="form-control" asp-items="@barberService">
+                </select>
+                <span asp-validation-for="BarberServiceId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-6 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <textarea type="text" asp-for="@Model.Description" class="form-control" required="required"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 text-right">
+                <button type="submit" class="btn btn-success"
+                        asp-area="Administration" asp-controller="Services" asp-action="AddService">
+                    Add Service
+                </button>
+            </div>
+            <div class="col-sm-6">
+                <a class="btn btn-danger" asp-area="Administration" asp-controller="Services" asp-action="Index">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

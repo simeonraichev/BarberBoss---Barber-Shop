@@ -19,16 +19,16 @@ namespace BarberBoss___Barber_Shop.ViewModels.BarberShops
         public string Name { get; set; }
 
         [Required]
-        public int CategoryId { get; set; }
+        public int BarberServiceId { get; set; }
 
         [Required]
-        public int CityId { get; set; }
+        public int TownId { get; set; }
 
         [Required]
         [StringLength(
-            5,
+            100,
             ErrorMessage = "Address must be between 5 and 100 characters.",
-            MinimumLength = 100)]
+            MinimumLength = 5)]
         public string Address { get; set; }
 
         [DataType(DataType.Upload)]

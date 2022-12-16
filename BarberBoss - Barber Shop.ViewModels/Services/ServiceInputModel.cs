@@ -21,9 +21,9 @@ namespace BarberBoss___Barber_Shop.ViewModels.Services
 
         [Required]
         [StringLength(
-            40,
+            650,
             ErrorMessage = "Description must be between 40 and 650 characters.",
-            MinimumLength = 650)]
+            MinimumLength = 40)]
         public string Description { get; set; }
     }
 }

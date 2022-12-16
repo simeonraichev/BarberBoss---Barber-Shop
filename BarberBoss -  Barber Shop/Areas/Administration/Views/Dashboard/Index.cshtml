@@ -1,1 +1,40 @@
-﻿
+﻿@using BarberBoss___Barber_Shop.Common
+@{
+    this.ViewData["Title"] = "Admin Dashboard";
+}
+
+<h3>Welcome to Admin Dashboard!</h3>
+<p>Here is a quick navigation:</p>
+<div>
+
+    <a asp-area="Administration" asp-controller="BarberServices" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">BarberServices</a>
+
+    <div class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Administration" asp-controller="BarberServices" asp-action="AddBarberService">Add New Barber Service</a>
+    </div>
+
+    <a asp-area="Administration" asp-controller="Services" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Services</a>
+
+    <div class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Administration" asp-controller="Services" asp-action="AddService">Add New Service</a>
+    </div>
+
+    <a asp-area="Administration" asp-controller="Towns" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Towns</a>
+
+    <div class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Administration" asp-controller="Towns" asp-action="AddTown">Add New Town</a>
+    </div>
+
+    <a asp-area="Administration" asp-controller="BarberShops" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">BarberShops</a>
+
+    <div class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Administration" asp-controller="BarberShops" asp-action="AddBarberShop">Add New BarberShop</a>
+    </div>
+
+    <a asp-area="Administration" asp-controller="Appointments" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Appointments</a>
+</div>

@@ -1,25 +1,93 @@
-﻿<header class="header" id="header">
-    <div>
-        <div class="header_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="header_top_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="logo">
-                                <a asp-area="" asp-controller="Home" asp-action="Index"><span>Barber</span>Boss</a>
-                            </div>
-                            <div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
-                                <div class="header_top_nav">
-                                    <ul class="d-flex flex-row align-items-center justify-content-start">
-                                        <partial name="_LoginPartial" />
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                        </div>
+﻿@using BarberBoss___Barber_Shop.Data.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<MyApplicationUser> SignInManager
+@inject UserManager<MyApplicationUser> UserManager
+@{
+    bool isLogged = this.User.Identity.IsAuthenticated;
+    MyApplicationUser user = this.UserManager.GetUserAsync(this.User).Result ?? null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Barber Boss - Barber Shop</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<header role="banner">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container bg-dark">
+            <a class="navbar-brand" href="index.html">Barber Boss</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse navbar-dark bg-dark" id="navbarsExample05">
+                <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Appointments" asp-action="Index"><i class="fa fa-calendar" aria-hidden="true"></i> Appointments</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="BarberShops" asp-action="Index">BarberShops</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Partners</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="BarberServices" asp-action="Index">Services</a>
+                    </li>
+                    @if (this.User.IsInRole("Administrator"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Administrator Dashboard</a>
+                        </li>
+                    }
+                </ul>
+
+
+                @if (!isLogged)
+                {
+                    <div class="d-flex align-items-center">
+                        <a class="btn btn-link px-3 me-2" asp-area="Identity" asp-page="/Account/Login">
+                            Login
+                        </a>
+                        <a class="btn btn-primary me-3" asp-area="Identity" asp-page="/Account/Register">
+                            Sign up
+                        </a>
                     </div>
-                </div>
+
+                }
+                else
+                {
+
+                    <form class="d-flex align-items-right" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
+                        <button class="btn btn-primary btn-dark me-2" type="submit">Logout</button>
+                    </form>
+                    
+                }
             </div>
-        </div>        
-    </div>
+
+        </div>
+    </nav>
 </header>
+

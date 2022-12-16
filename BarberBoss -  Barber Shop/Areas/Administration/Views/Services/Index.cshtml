@@ -1,5 +1,54 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BarberBoss___Barber_Shop.ViewModels.Services.ServicesListViewModel
+@using BarberBoss___Barber_Shop.Common
 @{
+    this.ViewData["Title"] = "Services";
 }
+
+<h2>
+    All Services (@Model.Services.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Services" asp-action="AddService">Add New Service</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">BarberService</th>
+            <th scope="col">Description</th>
+            <th scope="col">BarberShop</th>
+            <th scope="col">Appointments</th>
+            <th scope="col">Delete Button</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in this.Model.Services)
+        {
+            <tr>
+                <th scope="row">@service.Name</th>
+                <td>@service.BarberServiceName</td>
+                <td>@service.Description</td>
+                <td>@service.BarberShopsCount</td>
+                <td>@service.AppointmentsCount</td>
+                <td>
+                    @if (service.Id <= 6)
+                    {
+                        <div class="text-muted" style="font-size:smaller">
+                            Seeded Data <br />Cannot Be Deleted
+                        </div>
+                    }
+                    else
+                    {
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Administration" asp-controller="Services" asp-action="DeleteService" asp-route-id="@service.Id">
+                                Delete
+                            </button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

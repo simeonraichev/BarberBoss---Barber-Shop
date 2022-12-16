@@ -1,5 +1,59 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model BarberBoss___Barber_Shop.ViewModels.BarberShops.BarberShopsListViewModel
 @{
+    this.ViewData["Title"] = "Barber Shops";
 }
+
+<h2>
+    All Salons (@Model.BarberShops.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="BarberShops" asp-action="AddBarberShop">Add New BarberShop</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">BarberService</th>
+            <th scope="col">Town</th>
+            <th scope="col">Address</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Appointments</th>
+            <th scope="col">Delete Button</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var barberShops in this.Model.BarberShops)
+        {
+            <tr>
+                <th scope="row">@barberShops.Name</th>
+                <td>
+                    <img class="align-self-center" src="@barberShops.ImageUrl" style="width:180px;height:120px;">
+                </td>
+                <td>@barberShops.BarberServiceName</td>
+                <td>@barberShops.TownName</td>
+                <td>@barberShops.Address</td>
+                <td><strong>@barberShops.Rating.ToString("F") / 5.00</strong> from <strong>@barberShops.RatersCount</strong> votes</td>
+                <td>@barberShops.AppointmentsCount</td>
+                <td>
+                    @if (barberShops.Id.StartsWith("seeded"))
+                    {
+                        <div class="text-muted" style="font-size:smaller">
+                            Seeded Data <br />Cannot Be Deleted
+                        </div>
+                    }
+                    else
+                    {
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Administration" asp-controller="BarberShops" asp-action="DeleteBarberShop" asp-route-id="@barberShops.Id">
+                                Delete
+                            </button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
