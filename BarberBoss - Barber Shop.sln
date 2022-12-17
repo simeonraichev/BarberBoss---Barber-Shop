@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Services.Messaging", "BarberBoss - Barber Shop.Services.Messaging\BarberBoss - Barber Shop.Services.Messaging.csproj", "{F2831E78-B76B-4438-BD74-E10C1879F3C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.Web.Infrastructure", "BarberBoss - Barber Shop.Web.Infrastructure\BarberBoss - Barber Shop.Web.Infrastructure.csproj", "{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberBoss - Barber Shop.Web.Infrastructure", "BarberBoss - Barber Shop.Web.Infrastructure\BarberBoss - Barber Shop.Web.Infrastructure.csproj", "{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberBoss - Barber Shop.Services.Data.Tests", "BarberBoss - Barber Shop.Services.Data.Tests\BarberBoss - Barber Shop.Services.Data.Tests.csproj", "{E67CA266-059C-4301-9E17-D952B3C53882}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E67CA266-059C-4301-9E17-D952B3C53882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E67CA266-059C-4301-9E17-D952B3C53882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E67CA266-059C-4301-9E17-D952B3C53882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E67CA266-059C-4301-9E17-D952B3C53882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +104,7 @@ Global
 		{4CC66215-9F11-4BE5-9325-E4145B3FD212} = {F5BF8147-4D90-47F1-AE11-60F166CE8C03}
 		{F2831E78-B76B-4438-BD74-E10C1879F3C8} = {F5BF8147-4D90-47F1-AE11-60F166CE8C03}
 		{E5A90ED9-4CFF-4316-8E68-6E3EDDB123C6} = {121FCBC0-2CCC-49E7-A47D-C0C10E7CAFB3}
+		{E67CA266-059C-4301-9E17-D952B3C53882} = {ACC5B47A-A90F-4E43-A347-8E07379ED85D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F63BAD96-3A53-427E-8F44-8A6534DDFACB}

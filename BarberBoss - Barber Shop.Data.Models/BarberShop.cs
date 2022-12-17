@@ -23,7 +23,7 @@ namespace BarberBoss___Barber_Shop.Data.Models
         [Required]
         public string ImageUrl { get; set; }
 
-        public string OwnerId { get; set; }
+        public string? OwnerId { get; set; }
 
         public virtual MyApplicationUser Owner { get; set; }
         

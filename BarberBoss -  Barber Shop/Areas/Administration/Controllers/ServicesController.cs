@@ -49,7 +49,7 @@ namespace BarberBoss____Barber_Shop.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteService(int id)
         {
-            if (id <= 55)
+            if (id <= 51)
             {
                 return this.RedirectToAction("Index");
             }

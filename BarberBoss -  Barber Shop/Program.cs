@@ -7,7 +7,6 @@ using BarberBoss___Barber_Shop.Data.Common;
 using BarberBoss___Barber_Shop.Data.Common.Repositories;
 using BarberBoss___Barber_Shop.Data.Models;
 using BarberBoss___Barber_Shop.Data.Repositories;
-using BarberBoss___Barber_Shop.Data.Seeding;
 using BarberBoss___Barber_Shop.Services.Data.Appointments;
 using BarberBoss___Barber_Shop.Services.Data.BarberServices;
 using BarberBoss___Barber_Shop.Services.Data.BarberShops;
@@ -73,7 +72,7 @@ using (var serviceScope = app.Services.CreateScope())
 {
     ApplicationDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     dbContext.Database.Migrate();
-    new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+    //new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
 }
 AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 

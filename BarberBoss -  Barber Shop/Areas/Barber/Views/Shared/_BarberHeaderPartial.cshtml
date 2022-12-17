@@ -29,9 +29,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<header role="banner" class="navbar navbar-expand-md navbar-dark bg-dark" >
+<header role="banner">
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="margin: auto">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container bg-dark">
             <a class="navbar-brand" href="index.html">Barber Boss</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,12 +60,6 @@
                     {
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Administrator Dashboard</a>
-                        </li>
-                    }
-                    @if (this.User.IsInRole("Barber"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="Barber" asp-controller="Dashboard" asp-action="Index">Barber Dashboard</a>
                         </li>
                     }
                 </ul>

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BarberBoss___Barber_Shop.Web.Infrastructure.ViewComponents
 {
-    public class AppointmentsByBarberShop : ViewComponent
+    public class AllAppointmentsByBarberShop : ViewComponent
     {
         private readonly IAppointmentsService appointmentsService;
 
-        public AppointmentsByBarberShop(IAppointmentsService appointmentsService)
+        public AllAppointmentsByBarberShop(IAppointmentsService appointmentsService)
         {
             this.appointmentsService = appointmentsService;
         }

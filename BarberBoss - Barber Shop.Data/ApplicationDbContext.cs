@@ -83,6 +83,11 @@ namespace BarberBoss___Barber_Shop.Data
             {
                 RoleId = "66060726-5520-4b59-96d8-9c9c1b9c43b6",
                 UserId = "seededAdminb8633e2d-a33b-45e6-8329-1958b3252bbd"
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = "12ba897f-7ff7-4710-bc86-87455d6dbd03",
+                UserId = "seededBarberb8633e2d-a33b-45e6-8329-1958b3252bbd"
             }
         );
         }

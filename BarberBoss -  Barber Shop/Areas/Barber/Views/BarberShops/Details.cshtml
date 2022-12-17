@@ -5,13 +5,13 @@
 
 <div class="row row-eq-height">
     <!-- Info Box -->
-    <div class="col-lg-5 info_box_col">
-        <div class="info_box">
-            <div class="info_image"><img src="@Model.ImageUrl" alt=""></div>
+    <div class="col-lg-6 info_box_col">
+        <div class="card col-12 " style="width: 38rem;">
+            <div class="info_image"><img class="card-img-top" style="width: 25rem;" src="@Model.ImageUrl" alt=""></div>
             <div class="info_content">
                 <div class="info_title">@Model.Name</div>
-                <div class="info_text">Category: <strong>@Model.BarberServiceName</strong></div>
-                <div class="info_text">City: <strong>@Model.TownName</strong></div>
+                <div class="info_text">BarberService: <strong>@Model.BarberServiceName</strong></div>
+                <div class="info_text">Town: <strong>@Model.TownName</strong></div>
                 <div class="info_text">Address: <strong>@Model.Address</strong></div>
                 <div class="info_text">
                     Rating: &nbsp;&nbsp;
@@ -29,7 +29,7 @@
         </div>
     </div>
     <!-- Panel -->
-    <div class="col-lg-7">
+    <div class="col-lg-10">
         <h1>Services:</h1>
         <table class="table table-bordered">
             <thead class="thead-light">

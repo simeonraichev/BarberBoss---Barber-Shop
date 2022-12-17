@@ -140,37 +140,37 @@ namespace BarberBoss___Barber_Shop.Data
                         new BarberService // Id = 1
                     {
                         Name = "Shave & Haircut",
-                        Description = "Change u",
+                        Description = "Men's haircuts from the best barbers in the country. Cutting with the highest quality technologies and using high quality products.",
                         ImageUrl = "https://i2-prod.manchestereveningnews.co.uk/incoming/article21411590.ece/ALTERNATES/s1200b/0_gettyimages-1207048163-170667a.jpg",
                     },
                         new BarberService // Id = 2
                     {
                         Name = "Cream & Shampoo",
-                        Description = "Change u2",
+                        Description = "Your hair care from the best barbers with the best products in the industry.",
                         ImageUrl = "https://img.freepik.com/premium-photo/master-barber-shop-washes-client-s-head-with-little-shampoo-water_283470-3579.jpg?w=2000",
                     },
                         new BarberService // Id = 3
                     {
                         Name = "Mustache Expert",
-                        Description = "Change u3",
+                        Description = "Want to have a mustache but don't know how to style it? You are in the right place! Make an appointment and let us help you look better!",
                         ImageUrl = "https://www.bodyexpert.online/wp-content/uploads/2022/04/greffe-de-barbe-01-1024x576.jpg",
                     },
                         new BarberService // Id = 4
                     {
                         Name = "Haircut Styler",
-                        Description = "Change u4",
+                        Description = "Make a hairstyle with a fashionable style in the society! We expect you!",
                         ImageUrl = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/styling-hair-by-professional-hairdresser-royalty-free-image-1626807625.jpg",
                     },
                         new BarberService // Id = 5
                     {
                         Name = "Razor For Beard",
-                        Description = "Change u5",
+                        Description = " Shape your beard in the best possible way! Come to our barbershops and leave yourself in the hands of our professional barbers.",
                         ImageUrl = "https://media.istockphoto.com/id/622527180/photo/hipster-client-visiting-barber-shop.jpg?s=612x612&w=0&k=20&c=q5aEOfq8XccQfYbI-j9NjZjxO6J0av2JU47M9eJBfe0=",
                     },
                         new BarberService // Id = 6
                     {
                         Name = "Haircomb",
-                        Description = "Change u6",
+                        Description = "Do you want your hair to look so that everyone will like it? Come to our barbershops and we will take care of it!",
                         ImageUrl = "https://img.freepik.com/free-photo/barber-measuring-hair-with-comb_23-2148298332.jpg",
                     },
                     });
@@ -481,18 +481,31 @@ namespace BarberBoss___Barber_Shop.Data
                 });
                     context.SaveChanges();
                 }
-                //Seeding Admin Account in Role Administrator
-                //if (!context.UserRoles.Any())
-                //{
-                //    context.UserRoles.AddRange(new List<IdentityUserRole>()
-                //    {
-                //        new IdentityUserRole()
-                //        {
-                //            UserId = "",
-                //        }
-                //    });
-                //    context.SaveChanges();
-                //}
+                //Seeding Barber Account
+                if (!context.Users.Any(a => a.FirstName == "Barber"))
+                {
+                    var hasher = new PasswordHasher<MyApplicationUser>();
+                    var barberUser = new MyApplicationUser();
+
+                    context.Users.AddRange(new List<MyApplicationUser>()
+                    {
+                        new MyApplicationUser()
+                        {
+                            Id = "seededBarberb8633e2d-a33b-45e6-8329-1958b3252bbd",
+                            FirstName = "Barber",
+                            LastName = "One",
+                            UserName = "barber@gmail.com",
+                            NormalizedUserName = "BARBER@GMAIL.COM",
+                            Email = "barber@gmail.com",
+                            EmailConfirmed = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = Guid.NewGuid().ToString("D"),
+                            PasswordHash = hasher.HashPassword(barberUser, "Password"),
+                            LockoutEnabled = true,
+                        }
+                });
+                    context.SaveChanges();
+                }
             }
         }
     }

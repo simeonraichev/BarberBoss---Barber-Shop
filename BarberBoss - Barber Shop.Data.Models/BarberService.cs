@@ -21,7 +21,7 @@ namespace BarberBoss___Barber_Shop.Data.Models
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(15)]
+        [MaxLength(150)]
         public string Description { get; set; }
 
         [Required]
