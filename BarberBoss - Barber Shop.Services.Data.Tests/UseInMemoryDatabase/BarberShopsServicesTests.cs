@@ -107,15 +107,15 @@ namespace BarberBoss___Barber_Shop.Services.Data.Tests.UseInMemoryDatabase
             await this.CreateBarberShopAsync(newGuidId);
 
             var name = new NLipsum.Core.Sentence().ToString();
-            var categoryId = 1;
-            var cityId = 1;
+            var barberServiceId = 1;
+            var townId = 1;
             var address = new NLipsum.Core.Sentence().ToString();
             var imageUrl = new NLipsum.Core.Word().ToString();
 
-            await this.Service.AddAsync(name, categoryId, cityId, address, imageUrl);
+            await this.Service.AddAsync(name, barberServiceId, townId, address, imageUrl);
 
-            var salonsCount = await this.DbContext.BarberShops.CountAsync();
-            Assert.Equal(2, salonsCount);
+            var barberShopsCount = await this.DbContext.BarberShops.CountAsync();
+            Assert.Equal(2, barberShopsCount);
         }
 
         [Fact]
@@ -123,27 +123,27 @@ namespace BarberBoss___Barber_Shop.Services.Data.Tests.UseInMemoryDatabase
         {
             var newGuidId = Guid.NewGuid().ToString();
 
-            var salon = await this.CreateBarberShopAsync(newGuidId);
+            var barberShop = await this.CreateBarberShopAsync(newGuidId);
 
-            await this.Service.DeleteAsync(salon.Id);
+            await this.Service.DeleteAsync(barberShop.Id);
 
-            var salonsCount = this.DbContext.BarberShops.Where(x => !x.IsDeleted).ToArray().Count();
-            var deletedSalon = await this.DbContext.BarberShops.FirstOrDefaultAsync(x => x.Id == salon.Id);
-            Assert.Equal(0, salonsCount);
-            Assert.Null(deletedSalon);
+            var barberShopsCount = this.DbContext.BarberShops.Where(x => !x.IsDeleted).ToArray().Count();
+            var deletedBarberShop = await this.DbContext.BarberShops.FirstOrDefaultAsync(x => x.Id == barberShop.Id);
+            Assert.Equal(0, barberShopsCount);
+            Assert.Null(deletedBarberShop);
         }
 
         [Fact]
-        public async Task RateSalonAsyncTest()
+        public async Task RateBarberShopAsyncTest()
         {
             var newGuidId = Guid.NewGuid().ToString();
-            var salon = await this.CreateBarberShopAsync(newGuidId);
+            var barberShop = await this.CreateBarberShopAsync(newGuidId);
 
             var rateValue = 4;
             await this.Service.RateBarberShopAsync(newGuidId, rateValue);
 
             var expected = rateValue;
-            var actual = salon.Rating;
+            var actual = barberShop.Rating;
 
             Assert.Equal(expected, actual);
         }

@@ -19,6 +19,13 @@ namespace BarberBoss___Barber_Shop.Data.Configuration
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
+           
+            applicationUser
+                .HasMany(e => e.Roles)
+                .WithOne()
+                .HasForeignKey(e => e.UserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
 
             applicationUser
                 .HasMany(e => e.Logins)
@@ -27,12 +34,7 @@ namespace BarberBoss___Barber_Shop.Data.Configuration
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            applicationUser
-                .HasMany(e => e.Roles)
-                .WithOne()
-                .HasForeignKey(e => e.UserId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+            
         }
     }
 }

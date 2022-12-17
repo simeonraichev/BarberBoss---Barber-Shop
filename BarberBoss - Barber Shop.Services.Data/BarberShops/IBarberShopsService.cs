@@ -18,11 +18,11 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
 
         Task<int> GetCountForPaginationAsync(string searchString, int? sortId);
 
+        Task<string> AddAsync(string name, int barberServiceId, int townId, string address, string imageUrl);
+
         Task<IEnumerable<string>> GetAllIdsByBarberServiceAsync(int barberServiceId);
 
         Task<T> GetByIdAsync<T>(string id);
-
-        Task<string> AddAsync(string name, int barberServiceId, int townId, string address, string imageUrl);
 
         Task DeleteAsync(string id);
 

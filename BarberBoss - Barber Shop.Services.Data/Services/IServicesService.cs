@@ -11,9 +11,9 @@ namespace BarberBoss___Barber_Shop.Services.Data.Services
 
         Task<IEnumerable<int>> GetAllIdsByBarberServiceAsync(int barberServiceId);
 
-        Task<int> AddAsync(string name, int barberServiceId, string description);
-
         Task DeleteAsync(int id);
+
+        Task<int> AddAsync(string name, int barberServiceId, string description);
 
         Task<IEnumerable<T>> GetAllAsync<T>();
 

@@ -19,19 +19,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.Services
             this.servicesRepository = servicesRepository;
         }
 
-
-        public async Task<IEnumerable<int>> GetAllIdsByBarberServiceAsync(int barberServiceIdId)
-        {
-            ICollection<int> servicesIds =
-                await this.servicesRepository
-                .All()
-                .Where(x => x.BarberServiceId == barberServiceIdId)
-                .OrderBy(x => x.Id)
-                .Select(x => x.Id)
-                .ToListAsync();
-            return servicesIds;
-        }
-
         public async Task<int> AddAsync(string name, int barberServiceIdId, string description)
         {
             var barberService = new Service
@@ -55,6 +42,18 @@ namespace BarberBoss___Barber_Shop.Services.Data.Services
             this.servicesRepository.Delete(barberService);
             await this.servicesRepository.SaveChangesAsync();
         }
+        public async Task<IEnumerable<int>> GetAllIdsByBarberServiceAsync(int barberServiceIdId)
+        {
+            ICollection<int> servicesIds =
+                await this.servicesRepository
+                .All()
+                .Where(x => x.BarberServiceId == barberServiceIdId)
+                .OrderBy(x => x.Id)
+                .Select(x => x.Id)
+                .ToListAsync();
+            return servicesIds;
+        }
+
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
             var barberServices =

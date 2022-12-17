@@ -53,7 +53,6 @@ namespace BarberBoss___Barber_Shop.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             
-            // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
             this.ConfigureUserIdentityRelations(builder);
@@ -62,16 +61,14 @@ namespace BarberBoss___Barber_Shop.Data
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();
 
-            // Set global query filter for not deleted entities only
             var deletableEntityTypes = entityTypes
-                .Where(et => et.ClrType != null && typeof(IDeletableEntity).IsAssignableFrom(et.ClrType));
+               .Where(et => et.ClrType != null && typeof(IDeletableEntity).IsAssignableFrom(et.ClrType));
             foreach (var deletableEntityType in deletableEntityTypes)
             {
                 var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
                 method.Invoke(null, new object[] { builder });
             }
 
-            // Disable cascade delete
             var foreignKeys = entityTypes
                 .SelectMany(e => e.GetForeignKeys().Where(f => f.DeleteBehavior == DeleteBehavior.Cascade));
             foreach (var foreignKey in foreignKeys)

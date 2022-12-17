@@ -29,15 +29,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.Appointments
             return appointment;
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync<T>()
-        {
-            var appointments =
-                await this.appointmentsRepository
-                .All()
-                .OrderByDescending(x => x.DateTime)
-                .To<T>().ToListAsync();
-            return appointments;
-        }
 
         public async Task<IEnumerable<T>> GetAllByBarberShopAsync<T>(string barberShopId)
         {
@@ -61,6 +52,15 @@ namespace BarberBoss___Barber_Shop.Services.Data.Appointments
                 .To<T>().ToListAsync();
             return appointments;
         }
+        public async Task<IEnumerable<T>> GetAllAsync<T>()
+        {
+            var appointments =
+                await this.appointmentsRepository
+                .All()
+                .OrderByDescending(x => x.DateTime)
+                .To<T>().ToListAsync();
+            return appointments;
+        }
 
         public async Task<IEnumerable<T>> GetPastClientByUserAsync<T>(string userId)
         {
@@ -73,19 +73,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.Appointments
                 .OrderBy(x => x.DateTime)
                 .To<T>().ToListAsync();
             return appointments;
-        }
-
-        public async Task AddAsync(string userId, string barberShopId, int serviceId, DateTime dateTime)
-        {
-            await this.appointmentsRepository.AddAsync(new Appointment
-            {
-                Id = Guid.NewGuid().ToString(),
-                DateTime = dateTime,
-                UserId = userId,
-                BarberShopId = barberShopId,
-                ServiceId = serviceId,
-            });
-            await this.appointmentsRepository.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(string id)
@@ -107,6 +94,20 @@ namespace BarberBoss___Barber_Shop.Services.Data.Appointments
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             appointment.Confirmed = true;
+            await this.appointmentsRepository.SaveChangesAsync();
+        }
+
+
+        public async Task AddAsync(string userId, string barberShopId, int serviceId, DateTime dateTime)
+        {
+            await this.appointmentsRepository.AddAsync(new Appointment
+            {
+                Id = Guid.NewGuid().ToString(),
+                DateTime = dateTime,
+                UserId = userId,
+                BarberShopId = barberShopId,
+                ServiceId = serviceId,
+            });
             await this.appointmentsRepository.SaveChangesAsync();
         }
 

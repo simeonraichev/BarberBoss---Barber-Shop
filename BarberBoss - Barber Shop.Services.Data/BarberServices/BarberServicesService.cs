@@ -20,19 +20,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberServices
             this.barberServicesRepository = barberServicesRepository;
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
-        {
-            IQueryable<BarberService> query =
-                this.barberServicesRepository
-                .All()
-                .OrderBy(x => x.Id);
-            if (count.HasValue)
-            {
-                query = query.Take(count.Value);
-            }
-
-            return await query.To<T>().ToListAsync();
-        }
 
         public async Task<T> GetByIdAsync<T>(int id)
         {
@@ -53,6 +40,21 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberServices
                 ImageUrl = imageUrl,
             });
             await this.barberServicesRepository.SaveChangesAsync();
+        }
+
+
+        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
+        {
+            IQueryable<BarberService> query =
+                this.barberServicesRepository
+                .All()
+                .OrderBy(x => x.Id);
+            if (count.HasValue)
+            {
+                query = query.Take(count.Value);
+            }
+
+            return await query.To<T>().ToListAsync();
         }
 
         public async Task DeleteAsync(int id)

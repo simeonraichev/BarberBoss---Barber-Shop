@@ -49,17 +49,17 @@ namespace BarberBoss___Barber_Shop.Services.Data.Tests.UseInMemoryDatabase
             await this.CreateServiceAsync();
 
             var name = new NLipsum.Core.Sentence().ToString();
-            var categoryId = 1;
+            var barberServiceId = 1;
             var description = new NLipsum.Core.Paragraph().ToString();
 
-            await this.Service.AddAsync(name, categoryId, description);
+            await this.Service.AddAsync(name, barberServiceId, description);
 
             var servicesCount = await this.DbContext.Services.CountAsync();
             Assert.Equal(2, servicesCount);
         }
         
         [Fact]
-        public async Task GetAllIdsByCategoryAsyncShouldReturnCorrectCount()
+        public async Task GetAllIdsByBarberServiceAsyncShouldReturnCorrectCount()
         {
             var service1 = new Service
             {

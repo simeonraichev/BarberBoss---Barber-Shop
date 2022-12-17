@@ -10,14 +10,16 @@ namespace BarberBoss___Barber_Shop.Data.Common.Repositories
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity
     {
-        IQueryable<TEntity> AllWithDeleted();
 
         IQueryable<TEntity> AllAsNoTrackingWithDeleted();
 
         Task<TEntity> GetByIdWithDeletedAsync(params object[] id);
 
-        void HardDelete(TEntity entity);
+        IQueryable<TEntity> AllWithDeleted();
 
         void Undelete(TEntity entity);
+
+        void HardDelete(TEntity entity);
+
     }
 }

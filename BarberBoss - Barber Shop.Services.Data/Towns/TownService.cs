@@ -18,14 +18,7 @@ namespace BarberBoss___Barber_Shop.Services.Data.Towns
         {
             this.townsRepository = townsRepository;
         }
-        public async Task AddAsync(string name)
-        {
-            await this.townsRepository.AddAsync(new Town
-            {
-                Name = name,
-            });
-            await this.townsRepository.SaveChangesAsync();
-        }
+       
         public async Task DeleteAsync(int id)
         {
             var town =
@@ -34,6 +27,14 @@ namespace BarberBoss___Barber_Shop.Services.Data.Towns
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             this.townsRepository.Delete(town);
+            await this.townsRepository.SaveChangesAsync();
+        }
+        public async Task AddAsync(string name)
+        {
+            await this.townsRepository.AddAsync(new Town
+            {
+                Name = name,
+            });
             await this.townsRepository.SaveChangesAsync();
         }
         public async Task<IEnumerable<T>> GetAllAsync<T>()

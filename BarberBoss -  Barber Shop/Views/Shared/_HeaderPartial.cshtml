@@ -33,7 +33,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="margin: auto">
         <div class="container bg-dark">
-            <a class="navbar-brand" href="index.html">Barber Boss</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Barber Boss</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -49,9 +49,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="BarberShops" asp-action="Index">BarberShops</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Partners</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="BarberServices" asp-action="Index">Services</a>

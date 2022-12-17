@@ -18,7 +18,7 @@ namespace BarberBoss___Barber_Shop.Services.Data.Tests.UseInMemoryDatabase
         [Fact]
         public async Task AddAsyncTest()
         {
-            await this.CreateCityAsync();
+            await this.CreateTownAsync();
 
             var name = new NLipsum.Core.Word().ToString();
 
@@ -31,17 +31,17 @@ namespace BarberBoss___Barber_Shop.Services.Data.Tests.UseInMemoryDatabase
         [Fact]
         public async Task DeleteAsyncTest()
         {
-            var town = await this.CreateCityAsync();
+            var town = await this.CreateTownAsync();
 
             await this.Service.DeleteAsync(town.Id);
 
-            var citysCount = this.DbContext.Towns.Where(x => !x.IsDeleted).ToArray().Count();
-            var deletedCity = await this.DbContext.Towns.FirstOrDefaultAsync(x => x.Id == town.Id);
-            Assert.Equal(0, citysCount);
-            Assert.Null(deletedCity);
+            var townsCount = this.DbContext.Towns.Where(x => !x.IsDeleted).ToArray().Count();
+            var deletedTown = await this.DbContext.Towns.FirstOrDefaultAsync(x => x.Id == town.Id);
+            Assert.Equal(0, townsCount);
+            Assert.Null(deletedTown);
         }
 
-        private async Task<Town> CreateCityAsync()
+        private async Task<Town> CreateTownAsync()
         {
             var town = new Town
             {

@@ -17,19 +17,13 @@ namespace BarberBoss___Barber_Shop.Data.Repositories
         {
         }
 
-        public override IQueryable<TEntity> All() => base.All().Where(x => !x.IsDeleted);
+        public IQueryable<TEntity> AllWithDeleted() => base.All().IgnoreQueryFilters();
 
         public override IQueryable<TEntity> AllAsNoTracking() => base.AllAsNoTracking().Where(x => !x.IsDeleted);
 
-        public IQueryable<TEntity> AllWithDeleted() => base.All().IgnoreQueryFilters();
-
         public IQueryable<TEntity> AllAsNoTrackingWithDeleted() => base.AllAsNoTracking().IgnoreQueryFilters();
 
-        public Task<TEntity> GetByIdWithDeletedAsync(params object[] id)
-        {
-            var getByIdPredicate = EfExpressionHelper.BuildByIdPredicate<TEntity>(this.Context, id);
-            return AllWithDeleted().FirstOrDefaultAsync(getByIdPredicate);
-        }
+        public override IQueryable<TEntity> All() => base.All().Where(x => !x.IsDeleted);
 
         public void HardDelete(TEntity entity) => base.Delete(entity);
 
@@ -38,6 +32,11 @@ namespace BarberBoss___Barber_Shop.Data.Repositories
             entity.IsDeleted = false;
             entity.DeletedOn = null;
             this.Update(entity);
+        }
+        public Task<TEntity> GetByIdWithDeletedAsync(params object[] id)
+        {
+            var getByIdPredicate = EfExpressionHelper.BuildByIdPredicate<TEntity>(this.Context, id);
+            return AllWithDeleted().FirstOrDefaultAsync(getByIdPredicate);
         }
 
         public override void Delete(TEntity entity)

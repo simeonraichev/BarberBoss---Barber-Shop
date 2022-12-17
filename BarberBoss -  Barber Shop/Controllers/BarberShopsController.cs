@@ -35,7 +35,7 @@ namespace BarberBoss____Barber_Shop.Controllers
                     return new StatusCodeResult(404);
                 }
 
-                this.ViewData["CategoryName"] = barberService.Name;
+                this.ViewData["BarberServiceName"] = barberService.Name;
             }
             this.ViewData["CurrentSort"] = sortId;
 

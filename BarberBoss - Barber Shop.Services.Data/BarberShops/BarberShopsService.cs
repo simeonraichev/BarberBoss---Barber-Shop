@@ -26,29 +26,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
             return barberShops;
         }
 
-        public async Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(
-            string searchString,
-            int? sortId,
-            int pageSize,
-            int pageIndex)
-        {
-            IQueryable<BarberShop> query =
-                this.barberShopRepository
-                .AllAsNoTracking()
-                .OrderBy(x => x.Name);  
-                
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                query = query
-                    .Where(x => x.Name.ToLower()
-                                .Contains(searchString.ToLower()));
-            }
-
-            return await query
-                .Skip((pageIndex - 1) * pageSize)
-                .Take(pageSize)
-                .To<T>().ToListAsync();
-        }
 
         public async Task<int> GetCountForPaginationAsync(string searchString, int? sortId)
         {
@@ -88,6 +65,42 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
             return barberShop;
         }
 
+
+        public async Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(
+            string searchString,
+            int? sortId,
+            int pageSize,
+            int pageIndex)
+        {
+            IQueryable<BarberShop> query =
+                this.barberShopRepository
+                .AllAsNoTracking()
+                .OrderBy(x => x.Name);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                query = query
+                    .Where(x => x.Name.ToLower()
+                                .Contains(searchString.ToLower()));
+            }
+
+            return await query
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .To<T>().ToListAsync();
+        }
+
+        public async Task DeleteAsync(string id)
+        {
+            var barberShop =
+                await this.barberShopRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+            this.barberShopRepository.Delete(barberShop);
+            await this.barberShopRepository.SaveChangesAsync();
+        }
+
         public async Task<string> AddAsync(string name, int barberServiceId, int townId, string address, string imageUrl)
         {
             var barberShop = new BarberShop
@@ -106,16 +119,6 @@ namespace BarberBoss___Barber_Shop.Services.Data.BarberShops
             return barberShop.Id;
         }
 
-        public async Task DeleteAsync(string id)
-        {
-            var barberShop =
-                await this.barberShopRepository
-                .AllAsNoTracking()
-                .Where(x => x.Id == id)
-                .FirstOrDefaultAsync();
-            this.barberShopRepository.Delete(barberShop);
-            await this.barberShopRepository.SaveChangesAsync();
-        }
 
         public async Task RateBarberShopAsync(string id, int rateValue)
         {
