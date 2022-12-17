@@ -112,8 +112,8 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10" >
-                        <div styleid="selectedDate" asp-for="@Model.Date" class="form-control" hidden></div>
-                        <input asp-for="@Model.Date" value="" class="form-control color:cadetblue" required readonly />
+                        <div styleid="selectedDate" asp-for="@Model.Date" class="form-control" hidden ></div>
+                        <input style="color:aqua" asp-for="@Model.Date" value="" class="form-control color:cadetblue" required readonly />
                         <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
                 </div>
@@ -134,8 +134,8 @@
                     </div>
                 </div>
             </form>
-            <div class="btn btn-primary">
-                <a asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@Model.BarberShopId">
+            <div class="btn btn-primary"  >
+                <a style="color: white "asp-area="" asp-controller="BarberShops" asp-action="Details" asp-route-id="@Model.BarberShopId">
                     <span>Cancel</span>
                 </a>
             </div>
